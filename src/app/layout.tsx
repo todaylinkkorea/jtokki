@@ -10,6 +10,15 @@ export const metadata: Metadata = {
   description:
     '짭토끼가 실시간으로 검증한 살아있는 사이트만 모았습니다. 웹툰, 드라마, 커뮤니티 등 카테고리별 Top 3 추천.',
   keywords: ['짭토끼', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트', '사이트 모음', '링크 모음'],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: '짭토끼 - 실시간 검증 사이트 모음',
     description: '죽은 링크 없는, 진짜 살아있는 사이트만. 짭토끼가 실시간으로 검증합니다.',
@@ -27,11 +36,35 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        {/* Privacy-friendly analytics by Plausible */}
+        {/* Privacy-friendly analytics by Plausible — with custom event tracking */}
         <script async src="https://plausible.taskagenticai.com/js/pa-gicDJpf9v7C58om7zemkU.js" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
+            __html: [
+              // Init Plausible
+              `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init();`,
+              // Track outbound site clicks
+              `document.addEventListener('click',function(e){`,
+              `  var a=e.target.closest('a.site-row__name');`,
+              `  if(a){plausible('Site Click',{props:{site:a.textContent.trim(),url:a.href,category:a.closest('.category-card')?.querySelector('.card__title')?.textContent.trim()||'unknown'}})}`,
+              `});`,
+              // Track favorite toggles
+              `document.addEventListener('click',function(e){`,
+              `  var b=e.target.closest('.card__item-fav');`,
+              `  if(b){var name=b.closest('.site-row')?.querySelector('.site-row__name')?.textContent.trim()||'unknown';`,
+              `  plausible('Favorite Toggle',{props:{site:name,action:b.classList.contains('active')?'remove':'add'}})}`,
+              `});`,
+              // Track CTA button clicks
+              `document.addEventListener('click',function(e){`,
+              `  var c=e.target.closest('.cta-banner__btn,.article-cta__link');`,
+              `  if(c){plausible('CTA Click',{props:{text:c.textContent.trim(),page:location.pathname}})}`,
+              `});`,
+              // Track social link clicks
+              `document.addEventListener('click',function(e){`,
+              `  var s=e.target.closest('.footer__social-link');`,
+              `  if(s){plausible('Social Click',{props:{platform:s.getAttribute('aria-label')||'unknown'}})}`,
+              `});`,
+            ].join('\n'),
           }}
         />
       </head>

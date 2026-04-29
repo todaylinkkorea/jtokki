@@ -94,18 +94,6 @@ export const CATEGORIES: Category[] = [
     lastCheck: '방금 전',
   },
   {
-    id: 'toto-ko',
-    icon: '⚽',
-    title: '토토-국내',
-    sites: [
-      { name: '먹튀중개소', url: '#', status: 'live', latency: null },
-      { name: '월드슬롯', url: '#', status: 'live', latency: null },
-      { name: '도박꾼', url: '#', status: 'live', latency: null },
-    ],
-    uptime: 100,
-    lastCheck: '방금 전',
-  },
-  {
     id: 'toto-int',
     icon: '🎰',
     title: '토토-코인',
