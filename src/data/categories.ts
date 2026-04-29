@@ -26,11 +26,11 @@ export const CATEGORIES: Category[] = [
     icon: '📖',
     title: '웹툰',
     sites: [
-      { name: '뉴토끼', url: 'https://ntk01.com', status: 'dead', latency: null },
+      { name: '뉴토끼', url: 'https://ntk01.com', status: 'live', latency: 245 },
       { name: '늑대닷컴', url: 'https://wfwf449.com', status: 'live', latency: 368 },
       { name: '툰코', url: 'https://tkor114.com', status: 'live', latency: 357 },
     ],
-    uptime: 66.7,
+    uptime: 100,
     lastCheck: '방금 전',
   },
   {

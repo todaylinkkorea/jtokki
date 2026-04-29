@@ -156,6 +156,8 @@ export function CategorySection() {
                   latencyText = `${site.latency}ms`;
                 } else if (site.status === 'changed') {
                   latencyText = '주소변경';
+                } else if (site.status === 'live') {
+                  latencyText = '접속 가능';
                 } else {
                   latencyText = '접속불가';
                 }
