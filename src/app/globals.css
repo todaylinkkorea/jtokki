@@ -778,6 +778,31 @@ a:hover { color: #6ee7b7; }
   margin: 0 auto 6px;
   line-height: 1.6;
 }
+.footer__social {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #71717a;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid #d4d4d8;
+  transition: all var(--transition-fast);
+}
+.footer__social-link:hover {
+  color: #059669;
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+}
 .footer__copy { font-size: 12px; color: #a1a1aa; }
 
 /* ====== KEYFRAMES ====== */
