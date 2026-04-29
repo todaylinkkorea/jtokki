@@ -4,4 +4,4 @@ export const SITE_URL =
 
 /** Social links */
 export const GITHUB_URL = 'https://github.com/todaylinkkorea/jtokki';
-export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61576512498498';
+export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61589111935353';
