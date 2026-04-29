@@ -41,10 +41,9 @@ export default function RootLayout({
         {/* Footer — shared across pages */}
         <footer className="footer">
           <nav className="footer__links">
-            <a href="#">이용약관</a>
-            <a href="#">개인정보처리방침</a>
-            <a href="#">문의하기</a>
-            <a href="#">제휴 안내</a>
+            <a href="/terms">이용약관</a>
+            <a href="/privacy">개인정보처리방침</a>
+            <a href="https://github.com/todaylinkkorea/jtokki/issues" target="_blank" rel="noopener noreferrer">문의하기</a>
           </nav>
 
           {/* Social links */}
