@@ -5,9 +5,9 @@ import { CATEGORIES, type Category } from '@/data/categories';
 import { FavoriteButton } from './FavoriteButton';
 import { CardReveal } from './CardReveal';
 
-/** Crawler API base URL — override via env or default to localhost */
-const CRAWLER_API_URL =
-  process.env.NEXT_PUBLIC_CRAWLER_API_URL || 'http://localhost:3001';
+/** Crawler API base URL — set via NEXT_PUBLIC_CRAWLER_API_URL env var.
+ *  When empty, the component uses static data from categories.ts only. */
+const CRAWLER_API_URL = process.env.NEXT_PUBLIC_CRAWLER_API_URL || '';
 const CRAWLER_API_KEY = process.env.NEXT_PUBLIC_CRAWLER_API_KEY || '';
 
 /** Returns human-readable relative time like "3시간 전" */
@@ -72,6 +72,9 @@ export function CategorySection() {
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
+    // Skip API call when no crawler URL is configured (static-only mode)
+    if (!CRAWLER_API_URL) return;
+
     const headers: Record<string, string> = {};
     if (CRAWLER_API_KEY) {
       headers['X-API-Key'] = CRAWLER_API_KEY;
