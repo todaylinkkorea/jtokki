@@ -41,7 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 # === 비공개: 운영/개인 파일 ===
-/scripts/
+/scripts/sites.json
+/scripts/health-check.ts
 /stitch/
 /kaggle/
 AGENTS.md
