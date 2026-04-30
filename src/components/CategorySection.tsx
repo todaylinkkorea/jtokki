@@ -61,9 +61,8 @@ function mapApiToCategories(apiData: CrawlerCategory[]): Category[] {
       previousUrl: undefined,
     })),
     uptime: cat.uptime,
-    lastCheck: cat.sites[0]?.lastChecked
-      ? getRelativeTime(cat.sites[0].lastChecked)
-      : '방금 전',
+    // Runtime fetch is live — always show "방금 전"
+    lastCheck: '방금 전',
   }));
 }
 
