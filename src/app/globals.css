@@ -107,6 +107,7 @@ a:hover { color: #6ee7b7; }
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--text-primary);
+  margin-top: 2px;
 }
 
 .hero__live-badge {
@@ -361,10 +362,20 @@ a:hover { color: #6ee7b7; }
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0;
+  position: relative;
 }
 .site-row__status--live .site-row__dot {
   background: var(--success);
   box-shadow: 0 0 6px var(--success-glow);
+}
+.site-row__status--live .site-row__dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--success);
+  opacity: 0;
+  animation: pulse-ring 2s ease-out infinite;
 }
 .site-row__status--changed .site-row__dot {
   background: var(--warning);
