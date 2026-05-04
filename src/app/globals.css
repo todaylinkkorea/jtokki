@@ -1008,6 +1008,68 @@ a:hover {
   line-height: 1.5;
 }
 
+/* Author box */
+.author-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 40px 0 8px;
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.author-box__avatar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--success-dim);
+  border-radius: 50%;
+}
+
+.author-box__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.author-box__bio {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.author-box__social {
+  display: flex;
+  gap: 12px;
+}
+
+.author-box__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-default);
+  transition: all var(--transition-fast);
+}
+
+.author-box__social a:hover {
+  color: var(--success);
+  border-color: var(--success);
+  background: var(--success-dim);
+  transform: translateY(-2px);
+}
+
 /* ====== FOOTER (light continuation) ====== */
 .footer {
   position: relative;
