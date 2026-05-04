@@ -32,6 +32,7 @@ interface CrawlerSite {
   status: string;
   latency: number | null;
   lastChecked: string | null;
+  urlHistory?: { url: string; detectedAt: string }[];
 }
 
 interface CrawlerCategory {
@@ -52,14 +53,23 @@ function mapApiToCategories(apiData: CrawlerCategory[]): Category[] {
     id: cat.category,
     icon: cat.icon,
     title: cat.categoryTitle,
-    sites: cat.sites.map((s) => ({
-      name: s.name,
-      url: s.currentUrl,
-      status: (s.status === 'unknown' ? 'live' : s.status) as 'live' | 'changed' | 'dead',
-      latency: s.latency,
-      changedAt: undefined,
-      previousUrl: undefined,
-    })),
+    sites: cat.sites.map((s) => {
+      const history = s.urlHistory ?? [];
+      // If status is changed and we have history, use the latest entry's timestamp
+      const changedAt = s.status === 'changed' && history.length > 0
+        ? history[0].detectedAt
+        : undefined;
+      const previousUrl = history.length > 1 ? history[1].url : undefined;
+
+      return {
+        name: s.name,
+        url: s.currentUrl,
+        status: (s.status === 'unknown' ? 'live' : s.status) as 'live' | 'changed' | 'dead',
+        latency: s.latency,
+        changedAt,
+        previousUrl,
+      };
+    }),
     uptime: cat.uptime,
     // Runtime fetch is live — always show "방금 전"
     lastCheck: '방금 전',
