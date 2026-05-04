@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/constants';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
@@ -195,6 +196,20 @@ export default function AboutPage() {
             </p>
           </div>
 
+          <figure className="article-figure">
+            <Image
+              src="/images/about/jtokki-main-page.webp"
+              alt="짭토끼 메인 페이지 - 실시간 검증된 사이트 모음 대시보드"
+              width={960}
+              height={540}
+              className="article-figure__img"
+              priority
+            />
+            <figcaption className="article-figure__caption">
+              짭토끼 메인 페이지 — 카테고리별 실시간 상태와 Top 3 사이트를 한눈에 확인
+            </figcaption>
+          </figure>
+
           {/* ===== 공식 주소 ===== */}
           <h2 id="address">짭토끼 공식 주소 및 바로가기</h2>
 
@@ -322,6 +337,20 @@ export default function AboutPage() {
             </table>
           </div>
 
+          <figure className="article-figure">
+            <Image
+              src="/images/about/jtokki-vs-link-sites.webp"
+              alt="짭토끼와 기존 링크 모음 사이트 비교 - 실시간 헬스체크, 자동 도메인 감지, 데이터 기반 Top 3"
+              width={960}
+              height={540}
+              className="article-figure__img"
+              loading="lazy"
+            />
+            <figcaption className="article-figure__caption">
+              짭토끼 vs 기존 링크 모음 — 기술 기반 검증의 차이
+            </figcaption>
+          </figure>
+
           <p>
             짭토끼는 <strong>기술 기반의 객관적 데이터</strong>로 운영됩니다.
             광고비를 받고 순위를 조작하거나, 접속 불가능한 사이트를 방치하는 기존
@@ -359,6 +388,20 @@ export default function AboutPage() {
             응답 속도(ms)도 함께 표시되어, 서버의 현재 상태를 실시간으로 확인할 수
             있습니다.
           </p>
+
+          <figure className="article-figure">
+            <Image
+              src="/images/about/jtokki-status-badges.webp"
+              alt="짭토끼 실시간 상태 모니터링 - LIVE, CHANGED, DOWN 상태 뱃지 표시"
+              width={960}
+              height={720}
+              className="article-figure__img"
+              loading="lazy"
+            />
+            <figcaption className="article-figure__caption">
+              LIVE · CHANGED · DOWN — 한눈에 보는 사이트 접속 상태
+            </figcaption>
+          </figure>
 
           <h3>즐겨찾기 &amp; 텔레그램 알림</h3>
           <p>
