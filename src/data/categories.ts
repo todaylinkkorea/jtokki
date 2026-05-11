@@ -72,7 +72,7 @@ export const CATEGORIES: Category[] =
       },
       {
         "name": "후후티비",
-        "url": "https://hoohootv393.xyz",
+        "url": "https://hn.hoohootv396.xyz",
         "status": "live",
         "latency": 426
       }
