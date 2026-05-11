@@ -9,7 +9,7 @@ import { NewtokiModal } from '@/components/NewtokiModal';
 export const metadata: Metadata = {
   title: '짭토끼 — 뉴토끼 최신 주소를 찾는 가장 안전한 방법 (2026)',
   description:
-    '짭토끼에서 뉴토끼 최신 주소를 실시간으로 확인하세요. 뉴토끼 서비스 종료 후 안전한 접속 주소를 짭토끼가 검증하여 제공합니다. 짭토끼 주소, 짭토끼 바로가기.',
+    '짭토끼 주소 바로가기 — 뉴토끼 최신 접속 주소를 지금 바로 확인하세요. 짭토끼가 5분 간격으로 실시간 검증한 안전한 최신 주소를 제공합니다. 짭토끼 공식 주소 안내.',
   alternates: { canonical: `${SITE_URL}/about` },
   keywords: [
     '짭토끼', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트',
@@ -43,7 +43,7 @@ const articleSchema = {
     url: SITE_URL,
   },
   datePublished: '2026-05-04',
-  dateModified: '2026-05-04',
+  dateModified: '2026-05-11',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/about`,

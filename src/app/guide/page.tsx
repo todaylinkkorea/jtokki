@@ -20,7 +20,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '짭토끼' },
   publisher: { '@type': 'Organization', name: '짭토끼' },
   datePublished: '2026-04-28',
-  dateModified: '2026-04-28',
+  dateModified: '2026-05-11',
 };
 
 const breadcrumbSchema = {
