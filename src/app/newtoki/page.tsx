@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiModal } from '@/components/NewtokiModal';
+import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
   title: '뉴토끼 최신 주소 및 접속 방법 안내 (2026년 5월)',
@@ -111,7 +111,7 @@ export default function NewtokiPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiModal />
+      <NewtokiCTA />
 
       {/* Header nav */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>

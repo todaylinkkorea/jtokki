@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiModal } from '@/components/NewtokiModal';
+import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
   title: 'ntk01 뉴토끼 최신 주소 — 안전한 접속 방법 안내 (2026)',
@@ -122,7 +122,7 @@ export default function Ntk01Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiModal />
+      <NewtokiCTA />
 
       {/* Header */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>

@@ -3,7 +3,7 @@ import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiModal } from '@/components/NewtokiModal';
+import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
   title: '무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
@@ -121,7 +121,7 @@ export default function FreeWebtoonPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiModal />
+      <NewtokiCTA />
 
       {/* Header */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>

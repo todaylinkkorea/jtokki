@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiModal } from '@/components/NewtokiModal';
+import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
   title: '짭토끼 가이드 - 실시간 검증 사이트 모음 이용 방법',
@@ -87,7 +87,7 @@ export default function GuidePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiModal />
+      <NewtokiCTA />
 
       {/* Header nav */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>

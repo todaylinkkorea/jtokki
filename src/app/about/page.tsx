@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Image from 'next/image';
+import { CATEGORIES } from '@/data/categories';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiModal } from '@/components/NewtokiModal';
+import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
   title: '짭토끼 — 뉴토끼 최신 주소를 찾는 가장 안전한 방법 (2026)',
@@ -130,7 +131,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiModal />
+      <NewtokiCTA />
 
       {/* Header */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
@@ -191,6 +192,23 @@ export default function AboutPage() {
               곳입니다. 검색 엔진에서 직접 찾은 주소는 피싱 사이트일 수 있으니,{' '}
               <Link href="/">짭토끼 메인 페이지</Link>에서 검증된 주소를
               확인하세요.
+            </p>
+            <a
+              href={CATEGORIES.find((c) => c.id === 'webtoon')?.sites.find((s) => s.name === '뉴토끼')?.url ?? '/'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ntk-cta__button"
+              style={{ marginTop: 16 }}
+            >
+              <span className="ntk-cta__button-icon">🐰</span>
+              뉴토끼 최신 주소 바로가기
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
+            </a>
+            <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-muted)', marginTop: 8, marginBottom: 0 }}>
+              마지막 주소 변경: 2026-05-11
             </p>
           </div>
 
