@@ -3,7 +3,7 @@ import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiCTA } from '@/components/NewtokiCTA';
+import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
   title: '무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
@@ -121,8 +121,6 @@ export default function FreeWebtoonPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiCTA />
-
       {/* Header */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
@@ -185,6 +183,7 @@ export default function FreeWebtoonPage() {
               <strong>3. 툰코</strong> — 깔끔한 UI, 모바일 최적화<br /><br />
               👉 <Link href="/">짭토끼에서 최신 주소 바로 확인하기</Link>
             </p>
+            <NewtokiInlineButton />
           </div>
 
           {/* ===== TOP 3 상세 ===== */}

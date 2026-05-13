@@ -3,7 +3,7 @@ import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiCTA } from '@/components/NewtokiCTA';
+import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
   title: '웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
@@ -113,8 +113,6 @@ export default function WebtoonSitePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiCTA />
-
       {/* Header */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
@@ -178,6 +176,7 @@ export default function WebtoonSitePage() {
               <strong>3위. 툰코</strong> — 깔끔한 UI, 모바일 최적화 우수<br /><br />
               👉 <Link href="/">짭토끼에서 최신 주소 바로 확인하기</Link>
             </p>
+            <NewtokiInlineButton />
           </div>
 
           {/* ===== 순위 비교 ===== */}

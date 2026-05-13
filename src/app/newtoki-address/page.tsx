@@ -3,7 +3,7 @@ import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiCTA } from '@/components/NewtokiCTA';
+import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
   title: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 5월)',
@@ -57,8 +57,6 @@ export default function NewtokiAddressPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <NewtokiCTA />
-
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
           <div className="hero__top">
@@ -106,6 +104,7 @@ export default function NewtokiAddressPage() {
               뉴토끼 최신 주소는 수시로 변경됩니다. <Link href="/">짭토끼 메인 페이지</Link>의 웹툰 카테고리에서{' '}
               <strong>현재 접속 가능한 최신 주소</strong>를 실시간으로 확인하세요.
             </p>
+            <NewtokiInlineButton />
           </div>
 
           <h2 id="why">뉴토끼 최신 주소가 계속 바뀌는 이유</h2>

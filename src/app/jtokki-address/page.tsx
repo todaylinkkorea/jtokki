@@ -3,7 +3,7 @@ import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiCTA } from '@/components/NewtokiCTA';
+import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
   title: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 5월)',
@@ -58,8 +58,6 @@ export default function JtokkiAddressPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <NewtokiCTA />
-
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
           <div className="hero__top">
@@ -112,6 +110,7 @@ export default function JtokkiAddressPage() {
               이 외의 &quot;짭토끼&quot; 주소는 사칭 사이트일 수 있습니다.
               주소창의 자물쇠(🔒) 아이콘을 반드시 확인하세요.
             </p>
+            <NewtokiInlineButton />
           </div>
 
           <h2 id="what">짭토끼란? — 실시간 검증 사이트 모음</h2>

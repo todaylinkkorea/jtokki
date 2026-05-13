@@ -3,7 +3,7 @@ import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiCTA } from '@/components/NewtokiCTA';
+import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
   title: '웹툰 무료로 보는 법 — 접속 가능한 무료 웹툰 사이트 (2026년 5월)',
@@ -113,8 +113,6 @@ export default function WebtoonFreePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiCTA />
-
       {/* Header */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
@@ -174,6 +172,7 @@ export default function WebtoonFreePage() {
               <strong>실시간 검증된 최신 주소</strong>를 확인하면, 막힌
               주소를 직접 찾아 헤맬 필요가 없습니다.
             </p>
+            <NewtokiInlineButton />
           </div>
 
           {/* ===== 사이트 목록 ===== */}

@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiCTA } from '@/components/NewtokiCTA';
+import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
   title: '짭토끼 가이드 - 실시간 검증 사이트 모음 이용 방법',
@@ -87,8 +87,6 @@ export default function GuidePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <NewtokiCTA />
-
       {/* Header nav */}
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
@@ -138,6 +136,7 @@ export default function GuidePage() {
               &quot;죽은 링크 없는, 진짜 살아있는 사이트만&quot; — 짭토끼는 자동화된 실시간 모니터링 시스템을 통해
               등록된 모든 사이트의 접속 상태를 지속적으로 확인하고, 검증된 사이트만을 사용자에게 제공합니다.
             </p>
+            <NewtokiInlineButton />
           </div>
 
           <h2 id="problems">기존 링크 모음 사이트의 한계</h2>
