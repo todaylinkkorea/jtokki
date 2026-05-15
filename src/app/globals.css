@@ -3,8 +3,7 @@
    Design System from Stitch v1 Export
    ================================================ */
 
-/* -- Geist font from CDN -- */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap');
+/* -- Geist font loaded via <link> in layout.tsx (non-blocking) -- */
 
 :root {
   /* Surface scale (zinc-based) */
