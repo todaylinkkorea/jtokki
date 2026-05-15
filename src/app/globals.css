@@ -1079,6 +1079,27 @@ a:hover {
   text-align: center;
 }
 
+.footer__content-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d4d4d8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer__content-links a {
+  color: #52525b;
+  transition: color 150ms ease;
+}
+
+.footer__content-links a:hover {
+  color: #059669;
+}
+
 .footer__links {
   display: flex;
   justify-content: center;

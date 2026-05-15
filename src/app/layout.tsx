@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { GITHUB_URL, FACEBOOK_URL, X_URL } from '@/lib/constants';
+import { SITE_URL, GITHUB_URL, FACEBOOK_URL, X_URL } from '@/lib/constants';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: '%s | 짭토끼',
   },
   description:
-    '짭토끼가 실시간으로 검증한 살아있는 사이트만 모았습니다. 웹툰, 드라마, 커뮤니티 등 카테고리별 Top 3 추천.',
+    '짭토끼가 실시간으로 검증한 살아있는 사이트만 모았습니다. 웹툰, 드라마, 커뮤니티 등 카테고리별 Top 3 추천과 실시간 접속 상태를 확인하세요.',
   keywords: ['짭토끼', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트', '사이트 모음', '링크 모음'],
   icons: {
     icon: [
@@ -21,11 +21,40 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: '짭토끼 - 실시간 검증 사이트 모음',
-    description: '죽은 링크 없는, 진짜 살아있는 사이트만. 짭토끼가 실시간으로 검증합니다.',
+    description:
+      '죽은 링크 없는, 진짜 살아있는 사이트만 모았습니다. 짭토끼가 실시간 헬스체크로 검증한 안전한 사이트 주소를 확인하세요.',
     type: 'website',
     locale: 'ko_KR',
+    url: SITE_URL,
+    images: [
+      {
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+        alt: '짭토끼 로고',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: '짭토끼 - 실시간 검증 사이트 모음',
+    description:
+      '죽은 링크 없는, 진짜 살아있는 사이트만 모았습니다. 짭토끼가 실시간 헬스체크로 검증한 안전한 사이트 주소를 확인하세요.',
+    images: [`${SITE_URL}/logo.png`],
   },
   robots: { index: true, follow: true },
+};
+
+/** Sitewide Organization schema for entity SEO */
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: '짭토끼',
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  description: '실시간 헬스체크로 검증된 안전한 사이트 주소를 제공하는 링크 디렉토리 서비스',
+  sameAs: [FACEBOOK_URL, X_URL, GITHUB_URL],
+  foundingDate: '2024',
 };
 
 export default function RootLayout({
@@ -36,6 +65,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* Organization schema — sitewide entity SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {/* Privacy-friendly analytics by Plausible — with custom event tracking */}
         <script async src="https://plausible.taskagenticai.com/js/pa-gicDJpf9v7C58om7zemkU.js" />
         <script
@@ -73,6 +107,19 @@ export default function RootLayout({
 
         {/* Footer — shared across pages */}
         <footer className="footer">
+          {/* Internal links to content pages — resolves orphan page issue */}
+          <nav className="footer__content-links" aria-label="콘텐츠 바로가기">
+            <a href="/about">짭토끼 소개</a>
+            <a href="/guide">이용 가이드</a>
+            <a href="/newtoki">뉴토끼 주소</a>
+            <a href="/newtoki-address">뉴토끼 새주소</a>
+            <a href="/ntk01">ntk01 주소</a>
+            <a href="/webtoon-site">웹툰 사이트</a>
+            <a href="/webtoon-free">웹툰 무료</a>
+            <a href="/free-webtoon">무료 웹툰</a>
+            <a href="/jtokki-address">짭토끼 주소</a>
+          </nav>
+
           <nav className="footer__links">
             <a href="/terms">이용약관</a>
             <a href="/privacy">개인정보처리방침</a>

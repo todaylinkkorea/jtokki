@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { TypingEffect } from '@/components/TypingEffect';
 import { CategorySection } from '@/components/CategorySection';
@@ -48,7 +48,14 @@ const siteSchema = {
   '@type': 'WebSite',
   name: '짭토끼',
   url: SITE_URL,
-  description: '실시간 검증된 사이트 모음 서비스',
+  description: '실시간 헬스체크로 검증된 사이트 모음 서비스',
+  publisher: {
+    '@type': 'Organization',
+    name: '짭토끼',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    sameAs: [FACEBOOK_URL, X_URL, GITHUB_URL],
+  },
 };
 
 export default function HomePage() {

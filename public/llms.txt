@@ -1,0 +1,28 @@
+# 짭토끼 (jtokki)
+
+> 실시간 헬스체크로 검증된 안전한 사이트 주소를 제공하는 링크 디렉토리 서비스
+
+## About
+
+짭토끼는 웹툰, 드라마, 커뮤니티 등 다양한 카테고리의 인기 사이트들을 실시간으로 모니터링하고, 현재 정상적으로 접속 가능한 사이트만을 선별하여 제공합니다. 죽은 링크 없이 항상 살아있는 사이트만 제공하는 것이 핵심 가치입니다.
+
+## Key Pages
+
+- [홈페이지](https://xn--h10bl69b7nf.com): 실시간 검증된 사이트 모음 대시보드
+- [짭토끼 소개](https://xn--h10bl69b7nf.com/about): 짭토끼 서비스 소개 및 안전한 접속 방법
+- [이용 가이드](https://xn--h10bl69b7nf.com/guide): 짭토끼 이용 방법 및 검증 기준 안내
+- [뉴토끼 주소](https://xn--h10bl69b7nf.com/newtoki): 뉴토끼 최신 접속 주소 안내
+- [뉴토끼 새주소](https://xn--h10bl69b7nf.com/newtoki-address): 뉴토끼 최신 주소 변경 이력
+- [ntk01 주소](https://xn--h10bl69b7nf.com/ntk01): ntk01 뉴토끼 접속 주소
+- [웹툰 사이트](https://xn--h10bl69b7nf.com/webtoon-site): 웹툰 사이트 모음
+- [웹툰 무료](https://xn--h10bl69b7nf.com/webtoon-free): 무료 웹툰 사이트 안내
+- [무료 웹툰](https://xn--h10bl69b7nf.com/free-webtoon): 무료 웹툰 사이트 모음
+- [짭토끼 주소](https://xn--h10bl69b7nf.com/jtokki-address): 짭토끼 공식 주소 안내
+
+## Features
+
+- 실시간 헬스체크 (평균 5분 간격)
+- HTTP 상태 코드, SSL 인증서, 응답 속도 종합 검증
+- 도메인 변경 자동 감지 및 업데이트
+- 카테고리별 Top 3 엄선 추천
+- LIVE / CHANGED / DOWN 상태 표시
