@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
+import { SITE_URL, FACEBOOK_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
@@ -27,7 +27,7 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 5월)',
   description: '짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다.',
-  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, X_URL, GITHUB_URL] },
+  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-05-13', dateModified: '2026-05-13',
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki-address` },

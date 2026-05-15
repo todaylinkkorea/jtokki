@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
+import { SITE_URL, FACEBOOK_URL, GITHUB_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
@@ -26,7 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 5월)',
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
-  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, X_URL, GITHUB_URL] },
+  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-05-13', dateModified: '2026-05-13',
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/newtoki-address` },

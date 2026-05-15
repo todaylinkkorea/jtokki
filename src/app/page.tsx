@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SITE_URL, FACEBOOK_URL, X_URL, GITHUB_URL } from '@/lib/constants';
+import { SITE_URL, FACEBOOK_URL, GITHUB_URL } from '@/lib/constants';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { TypingEffect } from '@/components/TypingEffect';
 import { CategorySection } from '@/components/CategorySection';
@@ -54,7 +54,7 @@ const siteSchema = {
     name: '짭토끼',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    sameAs: [FACEBOOK_URL, X_URL, GITHUB_URL],
+    sameAs: [FACEBOOK_URL, GITHUB_URL],
   },
 };
 
