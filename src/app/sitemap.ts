@@ -4,78 +4,76 @@ import { SITE_URL } from '@/lib/constants';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   return [
     {
       url: SITE_URL,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 1.0,
     },
     {
       url: `${SITE_URL}/newtoki`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/ntk01`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/guide`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/webtoon-site`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/webtoon-free`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/free-webtoon`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/newtoki-address`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/jtokki-address`,
-      lastModified: now,
+      lastModified: '2026-05-15',
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/terms`,
-      lastModified: now,
+      lastModified: '2026-04-28',
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${SITE_URL}/privacy`,
-      lastModified: now,
+      lastModified: '2026-04-28',
       changeFrequency: 'yearly',
       priority: 0.3,
     },
