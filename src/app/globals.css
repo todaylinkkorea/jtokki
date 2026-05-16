@@ -1,6 +1,7 @@
 /* ================================================
    짭토끼 — Obsidian High-Contrast Dark Theme
    Design System from Stitch v1 Export
+   Build: 2026-05-17
    ================================================ */
 
 /* -- Geist font loaded via <link> in layout.tsx (non-blocking) -- */
@@ -52,6 +53,7 @@
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
+  --cache-bust: 20260517;
 }
 
 /* -- Reset -- */
