@@ -801,6 +801,7 @@ a:hover {
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: 48px;
+  overflow-x: hidden;
 }
 
 .article-toc {
@@ -1426,11 +1427,56 @@ a:hover {
   .article-layout {
     grid-template-columns: 1fr;
     gap: 0;
+    padding: 24px 16px 60px;
   }
 
+  /* Mobile TOC — horizontal scrollable pill bar */
   .article-toc {
     position: static;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+  }
+
+  .article-toc__title {
+    display: none;
+  }
+
+  .article-toc__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px 0 10px;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .article-toc__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .article-toc__list li {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .article-toc__list a {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--bg-surface-raised);
+    border: 1px solid var(--border-default);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+  }
+
+  .article-toc__list a:hover {
+    color: var(--success);
+    border-color: var(--success);
+    background: var(--success-dim);
   }
 
   .seo-article-layout {
@@ -1438,9 +1484,53 @@ a:hover {
     gap: 0;
   }
 
+  /* Light section TOC (seo-article) mobile pill bar */
   .seo-article-layout .article-toc {
     position: static;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+  }
+
+  .seo-article-section .article-toc__title {
+    display: none;
+  }
+
+  .seo-article-section .article-toc__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px 0 10px;
+    border-left: none;
+    padding-left: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .seo-article-section .article-toc__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .seo-article-section .article-toc__list li {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .seo-article-section .article-toc__list a {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid #d4d4d8;
+    border-radius: 100px;
+    font-size: 12px;
+    color: #52525b;
+    white-space: nowrap;
+  }
+
+  .seo-article-section .article-toc__list a:hover {
+    color: #059669;
+    border-color: #059669;
+    background: rgba(5,150,105,0.08);
   }
 }
 
