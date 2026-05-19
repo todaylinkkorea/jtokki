@@ -68,6 +68,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 body {
@@ -804,6 +805,11 @@ a:hover {
   overflow-x: hidden;
 }
 
+/* Grid children must have min-width: 0 to prevent overflow */
+.article-layout > * {
+  min-width: 0;
+}
+
 .article-toc {
   position: sticky;
   top: 80px;
@@ -1433,6 +1439,8 @@ a:hover {
   /* Mobile TOC — horizontal scrollable pill bar */
   .article-toc {
     position: static;
+    width: 100%;
+    overflow: hidden;
     margin-bottom: 24px;
   }
 
