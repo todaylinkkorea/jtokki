@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     title: '짭토끼 - 실시간 검증 사이트 모음',
     description:
       '죽은 링크 없는, 진짜 살아있는 사이트만 모았습니다. 짭토끼가 실시간 헬스체크로 검증한 안전한 사이트 주소를 확인하세요.',
+    siteName: '짭토끼',
     type: 'website',
     locale: 'ko_KR',
     url: SITE_URL,
