@@ -8,9 +8,9 @@ import { CATEGORIES } from '@/data/categories';
  * — categories.ts 업데이트 시 여기도 함께 수정
  */
 const ADDRESS_HISTORY = [
-  { date: '2026-05-11', from: 'newtoki322.com', to: 'ntk01.com' },
+  { date: '2026-05-11', from: 'ntk01.com', to: 'sbxh1.com' },
+  { date: '2026-05-01', from: 'newtoki322.com', to: 'ntk01.com' },
   { date: '2026-04-28', from: 'newtoki315.com', to: 'newtoki322.com' },
-  { date: '2026-04-14', from: 'newtoki308.com', to: 'newtoki315.com' },
 ] as const;
 
 /**
