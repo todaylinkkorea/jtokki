@@ -15,13 +15,14 @@ const ADDRESS_HISTORY = [
 
 /**
  * 홍보 동영상 목록 (public/clips/ 아래에 영상 파일을 추가하세요)
- * Ad Blocker 우회를 위해 디렉토리명은 clips, 파일명은 clip*.mp4로 지정합니다.
+ * Ad Blocker 우회를 위해 디렉토리명은 clips, 파일명은 clip*.mp4/webm으로 지정합니다.
+ * webm 포맷이 최우선 재생되며, fallback으로 mp4가 사용됩니다.
  */
 const PROMO_CLIPS = [
-  { id: 'clip1', src: '/clips/clip1.mp4' },
-  { id: 'clip2', src: '/clips/clip2.mp4' },
-  { id: 'clip3', src: '/clips/clip3.mp4' },
-  { id: 'clip4', src: '/clips/clip4.mp4' },
+  { id: 'clip1', mp4: '/clips/clip1.mp4', webm: '/clips/clip1.webm' },
+  { id: 'clip2', mp4: '/clips/clip2.mp4', webm: '/clips/clip2.webm' },
+  { id: 'clip3', mp4: '/clips/clip3.mp4', webm: '/clips/clip3.webm' },
+  { id: 'clip4', mp4: '/clips/clip4.mp4', webm: '/clips/clip4.webm' },
 ] as const;
 
 // ⚠️ 특정 영상으로 완전히 고정하고 싶을 때 여기에 ID(예: 'clip1')를 입력하세요. (null 이면 랜덤 로테이션)
@@ -51,7 +52,7 @@ function getNewtokiUrl(): string {
 export function NewtokiCTA() {
   const currentUrl = getNewtokiUrl();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeClip, setActiveClip] = useState<{ id: string; src: string } | null>(null);
+  const [activeClip, setActiveClip] = useState<{ id: string; mp4: string; webm: string } | null>(null);
   const [shouldLoadClip, setShouldLoadClip] = useState(false);
 
   // 컴포넌트 마운트 시 보여줄 영상 결정 및 통계 콘솔 도구 등록
@@ -188,13 +189,15 @@ export function NewtokiCTA() {
           >
             <video
               className="ntk-cta__promo-video"
-              src={activeClip.src}
               autoPlay
               muted
               loop
               playsInline
               preload="metadata"
-            />
+            >
+              <source src={activeClip.webm} type="video/webm" />
+              <source src={activeClip.mp4} type="video/mp4" />
+            </video>
             {/* 영상 마크 (AD 대신 SPONSOR 표기로 광고 차단 우회) */}
             <span className="ntk-cta__promo-badge">
               SPONSOR
