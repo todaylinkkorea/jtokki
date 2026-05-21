@@ -29,7 +29,7 @@ const PROMO_CLIPS = [
 const FORCED_CLIP_ID: string | null = null;
 
 // 영상 클릭 시 이동할 공통 링크
-const PROMO_TARGET_URL = "https://cu2day.com";
+const PROMO_TARGET_URL = "https://cu2day.com/?utm_source=jtokki&utm_medium=referral";
 
 /**
  * Plausible 커스텀 이벤트 전송용 안전 헬퍼 함수
@@ -183,7 +183,7 @@ export function NewtokiCTA() {
           <a 
             href={PROMO_TARGET_URL} 
             target="_blank" 
-            rel="noopener noreferrer" 
+            rel="noopener" 
             onClick={handlePromoClick}
             className="ntk-cta__promo-link"
           >
@@ -212,7 +212,7 @@ export function NewtokiCTA() {
 
       {/* cu2day 홍보 링크 */}
       <p className="ntk-cta__sub">
-        <a href="https://cu2day.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://cu2day.com/?utm_source=jtokki&utm_medium=referral" target="_blank" rel="noopener">
           매일 업데이트되는 세상 모든 AI 영상 cu2day.com
         </a>
       </p>
