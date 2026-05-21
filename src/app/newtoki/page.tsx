@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/constants';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
-import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
   title: '뉴토끼 최신 주소 및 접속 방법 안내 (2026년 5월)',
@@ -160,14 +160,7 @@ export default function NewtokiPage() {
             실시간으로 모니터링하고 있으며, 현재 접속 가능한 최신 주소를 자동으로 업데이트합니다.
           </p>
 
-          <div className="callout">
-            <p className="callout__title">📢 뉴토끼 현재 상태</p>
-            <p className="callout__body">
-              2026년 5월 기준, 뉴토끼는 현재 <strong style={{ color: '#34d399' }}>접속 가능</strong> 상태입니다.
-              최신 주소는 <Link href="/">짭토끼 메인 페이지</Link>의 웹툰 카테고리에서 실시간으로 확인할 수 있습니다.
-            </p>
-            <NewtokiInlineButton />
-          </div>
+          <NewtokiCTA />
 
           <h2 id="latest-address">뉴토끼 최신 주소 확인 방법</h2>
 

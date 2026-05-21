@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 import { CATEGORIES } from '@/data/categories';
 
 /**
@@ -14,9 +14,33 @@ const ADDRESS_HISTORY = [
 ] as const;
 
 /**
- * 뉴토끼 최신 주소를 categories.ts (크롤러가 갱신) 에서 가져온다.
- * categories.ts 는 prebuild 시 크롤러 API 에서 받아 자동 생성되므로
- * 배포 시점의 최신 주소가 자동 반영된다.
+ * 홍보 동영상 목록 (public/clips/ 아래에 영상 파일을 추가하세요)
+ * Ad Blocker 우회를 위해 디렉토리명은 clips, 파일명은 clip*.mp4로 지정합니다.
+ */
+const PROMO_CLIPS = [
+  { id: 'clip1', src: '/clips/clip1.mp4' },
+  { id: 'clip2', src: '/clips/clip2.mp4' },
+  { id: 'clip3', src: '/clips/clip3.mp4' },
+  { id: 'clip4', src: '/clips/clip4.mp4' },
+] as const;
+
+// ⚠️ 특정 영상으로 완전히 고정하고 싶을 때 여기에 ID(예: 'clip1')를 입력하세요. (null 이면 랜덤 로테이션)
+const FORCED_CLIP_ID: string | null = null;
+
+// 영상 클릭 시 이동할 공통 링크
+const PROMO_TARGET_URL = "https://cu2day.com";
+
+/**
+ * Plausible 커스텀 이벤트 전송용 안전 헬퍼 함수
+ */
+const sendPlausible = (eventName: string, props: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).plausible) {
+    (window as any).plausible(eventName, { props });
+  }
+};
+
+/**
+ * 뉴토끼 최신 주소를 categories.ts 에서 가져온다.
  */
 function getNewtokiUrl(): string {
   const webtoonCat = CATEGORIES.find((c) => c.id === 'webtoon');
@@ -26,6 +50,83 @@ function getNewtokiUrl(): string {
 
 export function NewtokiCTA() {
   const currentUrl = getNewtokiUrl();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeClip, setActiveClip] = useState<{ id: string; src: string } | null>(null);
+  const [shouldLoadClip, setShouldLoadClip] = useState(false);
+
+  // 컴포넌트 마운트 시 보여줄 영상 결정 및 통계 콘솔 도구 등록
+  useEffect(() => {
+    // 1. 홍보 영상 선정
+    if (FORCED_CLIP_ID) {
+      const forced = PROMO_CLIPS.find(clip => clip.id === FORCED_CLIP_ID);
+      if (forced) setActiveClip(forced);
+    } else {
+      // 랜덤 로테이션
+      const randomIndex = Math.floor(Math.random() * PROMO_CLIPS.length);
+      setActiveClip(PROMO_CLIPS[randomIndex]);
+    }
+
+    // 2. 개발자 도구 콘솔용 클릭률 확인 헬퍼 함수 등록 (Ad blocker 우회를 위한 이름 변경)
+    (window as any).showPromoStats = () => {
+      try {
+        const stats = JSON.parse(localStorage.getItem('promo_stats') || '{}');
+        const formatted = Object.entries(stats).map(([id, data]: any) => {
+          const ctr = data.views > 0 ? ((data.clicks / data.views) * 100).toFixed(2) + '%' : '0%';
+          return { '영상 ID': id, '노출수': data.views, '클릭수': data.clicks, '클릭률(CTR)': ctr };
+        });
+        console.table(formatted);
+      } catch (e) {
+        console.error('통계 데이터를 불러오지 못했습니다.', e);
+      }
+    };
+  }, []);
+
+  // 뷰포트 진입 감지 (지연 로딩 및 노출 통계 수집)
+  useEffect(() => {
+    if (!activeClip) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadClip(true);
+          
+          // 노출(View) 통계 로컬 저장
+          try {
+            const stats = JSON.parse(localStorage.getItem('promo_stats') || '{}');
+            if (!stats[activeClip.id]) stats[activeClip.id] = { views: 0, clicks: 0 };
+            stats[activeClip.id].views += 1;
+            localStorage.setItem('promo_stats', JSON.stringify(stats));
+          } catch (e) {}
+
+          // Plausible Analytics 노출 이벤트 전송 (이벤트명도 ad block 회피)
+          sendPlausible('Promo View', { promo_id: activeClip.id, page: '/newtoki' });
+
+          observer.disconnect(); // 한 번 로드 시 감지 중단
+        }
+      },
+      { rootMargin: '150px' } // 화면 진입 150px 전 미리 로딩
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [activeClip]);
+
+  // 클릭 핸들러 (클릭 통계 수집)
+  const handlePromoClick = () => {
+    if (!activeClip) return;
+    try {
+      const stats = JSON.parse(localStorage.getItem('promo_stats') || '{}');
+      if (!stats[activeClip.id]) stats[activeClip.id] = { views: 0, clicks: 0 };
+      stats[activeClip.id].clicks += 1;
+      localStorage.setItem('promo_stats', JSON.stringify(stats));
+    } catch (e) {}
+
+    // Plausible Analytics 클릭 이벤트 전송 (이벤트명도 ad block 회피)
+    sendPlausible('Promo Click', { promo_id: activeClip.id, page: '/newtoki' });
+  };
 
   return (
     <section className="ntk-cta" aria-label="뉴토끼 최신 주소 안내">
@@ -71,9 +172,46 @@ export function NewtokiCTA() {
         </svg>
       </a>
 
-      {/* 짭토끼 메인 링크 */}
+      {/* 영상 광고 배너 구역 (지연 로딩 및 바닐라 CSS 적용) */}
+      <div 
+        ref={containerRef} 
+        className="ntk-cta__promo-container"
+        style={{ aspectRatio: '9/16' }}
+      >
+        {shouldLoadClip && activeClip ? (
+          <a 
+            href={PROMO_TARGET_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            onClick={handlePromoClick}
+            className="ntk-cta__promo-link"
+          >
+            <video
+              className="ntk-cta__promo-video"
+              src={activeClip.src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+            {/* 영상 마크 (AD 대신 SPONSOR 표기로 광고 차단 우회) */}
+            <span className="ntk-cta__promo-badge">
+              SPONSOR
+            </span>
+          </a>
+        ) : (
+          <div className="ntk-cta__promo-fallback">
+            로딩 중...
+          </div>
+        )}
+      </div>
+
+      {/* cu2day 홍보 링크 */}
       <p className="ntk-cta__sub">
-        또는 <Link href="/">짭토끼 메인 페이지</Link>에서 전체 사이트 실시간 상태를 확인하세요
+        <a href="https://cu2day.com" target="_blank" rel="noopener noreferrer">
+          매일 업데이트되는 세상 모든 AI 영상 cu2day.com
+        </a>
       </p>
     </section>
   );
