@@ -1,17 +1,15 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { CATEGORIES } from '@/data/categories';
+import { CATEGORIES, NEWTOKI_HISTORY } from '@/data/categories';
+import type { HistoryEntry } from '@/data/categories';
 
 /**
- * 뉴토끼 최신 주소 변경 내역 (최대 3건, 최신순)
- * — categories.ts 업데이트 시 여기도 함께 수정
+ * 뉴토끼 최신 주소 변경 내역 (최대 5건, 최신순)
+ * — 빌드 시 fetch-categories.ts 가 크롤러 DB에서 자동 생성
+ * — NEWTOKI_HISTORY 가 없으면 (API 미연결 빌드) 빈 배열로 fallback
  */
-const ADDRESS_HISTORY = [
-  { date: '2026-05-11', from: 'ntk01.com', to: 'sbxh1.com' },
-  { date: '2026-05-01', from: 'newtoki322.com', to: 'ntk01.com' },
-  { date: '2026-04-28', from: 'newtoki315.com', to: 'newtoki322.com' },
-] as const;
+const ADDRESS_HISTORY: HistoryEntry[] = NEWTOKI_HISTORY ?? [];
 
 /**
  * 홍보 동영상 목록 (public/clips/ 아래에 영상 파일을 추가하세요)

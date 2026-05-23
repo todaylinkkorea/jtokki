@@ -45,6 +45,7 @@ interface CrawlerSite {
   status: string;
   latency: number | null;
   lastChecked: string | null;
+  urlHistory?: { url: string; detectedAt: string }[];
 }
 
 interface CrawlerCategory {
@@ -153,6 +154,47 @@ function generateCategoriesTs(apiData: CrawlerResponse): string {
   return lines.join('\n');
 }
 
+// ── Generate URL history for 뉴토끼 ──────────────
+function generateNewtokiHistory(urlHistory: { url: string; detectedAt: string }[]): string {
+  if (urlHistory.length < 2) return '';
+
+  // Build change entries: each URL change = { date, from (previous), to (new) }
+  const entries: { date: string; from: string; to: string }[] = [];
+
+  for (let i = 0; i < urlHistory.length - 1 && entries.length < 5; i++) {
+    const to = urlHistory[i];
+    const from = urlHistory[i + 1];
+    try {
+      const toHost = new URL(to.url).hostname.replace(/^www\./, '');
+      const fromHost = new URL(from.url).hostname.replace(/^www\./, '');
+      entries.push({
+        date: to.detectedAt.split(' ')[0], // 'YYYY-MM-DD HH:MM:SS' → 'YYYY-MM-DD'
+        from: fromHost,
+        to: toHost,
+      });
+    } catch {
+      // skip unparseable URLs
+    }
+  }
+
+  if (entries.length === 0) return '';
+
+  const lines: string[] = [
+    '',
+    'export interface HistoryEntry {',
+    '  date: string;',
+    '  from: string;',
+    '  to: string;',
+    '}',
+    '',
+    'export const NEWTOKI_HISTORY: HistoryEntry[] = ',
+    JSON.stringify(entries, null, 2) + ';',
+    '',
+  ];
+
+  return lines.join('\n');
+}
+
 function getRelativeTime(isoDate: string | null | undefined): string {
   if (!isoDate) return '방금 전';
   const now = Date.now();
@@ -186,7 +228,35 @@ async function main() {
     return;
   }
 
-  const content = generateCategoriesTs(apiData);
+  let content = generateCategoriesTs(apiData);
+
+  // Fetch 뉴토끼 URL history for auto-generated ADDRESS_HISTORY
+  if (API_URL && API_KEY) {
+    try {
+      console.log('🔄 Fetching 뉴토끼 URL history...');
+      const histRes = await fetch(`${API_URL}/api/sites/${encodeURIComponent('뉴토끼')}`, {
+        headers: { 'X-API-Key': API_KEY },
+        signal: AbortSignal.timeout(10000),
+      });
+
+      if (histRes.ok) {
+        const histData = (await histRes.json()) as {
+          ok: boolean;
+          data: { urlHistory: { url: string; detectedAt: string }[] };
+        };
+        if (histData.ok && histData.data.urlHistory?.length >= 2) {
+          const historyTs = generateNewtokiHistory(histData.data.urlHistory);
+          if (historyTs) {
+            content += historyTs;
+            console.log(`✅ NEWTOKI_HISTORY generated (${histData.data.urlHistory.length} URL records)`);
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('⚠️  Failed to fetch 뉴토끼 history (non-fatal):', err instanceof Error ? err.message : err);
+    }
+  }
+
   writeFileSync(OUTPUT_PATH, content, 'utf-8');
   console.log(`✅ categories.ts updated with ${apiData.data.length} categories`);
   console.log(`📁 Written to: ${OUTPUT_PATH}\n`);
