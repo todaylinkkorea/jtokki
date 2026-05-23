@@ -43,7 +43,7 @@ const articleSchema = {
     url: SITE_URL,
   },
   datePublished: '2026-05-04',
-  dateModified: '2026-05-11',
+  dateModified: '2026-05-23',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/ntk01`,

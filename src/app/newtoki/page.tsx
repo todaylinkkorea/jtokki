@@ -32,7 +32,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '짭토끼' },
   publisher: { '@type': 'Organization', name: '짭토끼' },
   datePublished: '2026-04-29',
-  dateModified: '2026-05-11',
+  dateModified: '2026-05-23',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/newtoki`,

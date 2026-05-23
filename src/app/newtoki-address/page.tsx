@@ -28,7 +28,7 @@ const articleSchema = {
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  datePublished: '2026-05-13', dateModified: '2026-05-13',
+  datePublished: '2026-05-13', dateModified: '2026-05-23',
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/newtoki-address` },
 };
 
@@ -143,7 +143,9 @@ export default function NewtokiAddressPage() {
             <table className="comparison-table">
               <thead><tr><th>변경일</th><th>이전 주소</th><th>새 주소</th></tr></thead>
               <tbody>
-                <tr><td>2026-05-11</td><td>newtoki322.com</td><td><strong>ntk01.com</strong></td></tr>
+                <tr><td>2026-05-18</td><td>sbxh1.com</td><td><strong>sbxh2.com</strong></td></tr>
+                <tr><td>2026-05-12</td><td>ntk01.com</td><td>sbxh1.com</td></tr>
+                <tr><td>2026-05-11</td><td>newtoki322.com</td><td>ntk01.com</td></tr>
                 <tr><td>2026-04-28</td><td>newtoki315.com</td><td>newtoki322.com</td></tr>
                 <tr><td>2026-04-14</td><td>newtoki308.com</td><td>newtoki315.com</td></tr>
               </tbody>

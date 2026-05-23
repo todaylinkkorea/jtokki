@@ -1,4 +1,4 @@
-import { CATEGORIES } from '@/data/categories';
+import { CATEGORIES, NEWTOKI_HISTORY } from '@/data/categories';
 
 /**
  * 뉴토끼 최신 주소 바로가기 인라인 버튼 (서버 컴포넌트)
@@ -9,6 +9,7 @@ export function NewtokiInlineButton() {
   const webtoonCat = CATEGORIES.find((c) => c.id === 'webtoon');
   const newtoki = webtoonCat?.sites.find((s) => s.name === '뉴토끼');
   const url = newtoki?.url ?? '/';
+  const lastChanged = NEWTOKI_HISTORY?.[0]?.date ?? '알 수 없음';
 
   return (
     <>
@@ -28,7 +29,7 @@ export function NewtokiInlineButton() {
         </svg>
       </a>
       <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-muted)', marginTop: 8, marginBottom: 0 }}>
-        마지막 주소 변경: 2026-05-11
+        마지막 주소 변경: {lastChanged}
       </p>
     </>
   );
