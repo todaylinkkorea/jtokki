@@ -30,6 +30,7 @@ const articleSchema = {
   headline: '웹툰 무료로 보는 법 — 접속 가능한 무료 웹툰 사이트 (2026년 5월)',
   description:
     '무료 웹툰 사이트의 최신 접속 주소와 안전한 이용 방법을 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: {
     '@type': 'Organization',
     name: '짭토끼',
@@ -58,44 +59,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '웹툰을 무료로 볼 수 있는 사이트가 있나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '네, 뉴토끼, 늑대닷컴, 툰코 등 무료로 웹툰을 볼 수 있는 사이트가 있습니다. 다만 도메인이 자주 변경되므로, 짭토끼에서 현재 접속 가능한 최신 주소를 실시간으로 확인하는 것이 가장 안전합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '무료 웹툰 사이트에 접속할 때 주의할 점은?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'SSL 인증서(HTTPS)가 적용되어 있는지 확인하고, 과도한 팝업이나 개인정보 입력을 요구하는 사이트는 피하세요. 짭토끼에서 검증된 주소를 통해 접속하면 피싱 위험을 줄일 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '무료 웹툰 사이트 주소가 왜 자꾸 바뀌나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '저작권 관련 법적 조치로 도메인이 차단되면 새 도메인으로 이전합니다. 짭토끼는 이러한 변경을 5분 간격으로 자동 감지하여 항상 최신 주소를 제공합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '짭토끼에서 무료 웹툰 사이트 주소를 어떻게 확인하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼 메인 페이지에 접속하여 웹툰 카테고리를 확인하세요. LIVE 표시된 사이트를 클릭하면 현재 접속 가능한 최신 주소로 바로 연결됩니다.',
-      },
-    },
-  ],
-};
 
 export default function WebtoonFreePage() {
   return (
@@ -107,10 +70,6 @@ export default function WebtoonFreePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header */}

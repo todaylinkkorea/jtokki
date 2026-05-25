@@ -30,6 +30,7 @@ const articleSchema = {
   headline: '무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
   description:
     '짭토끼가 실시간 검증한 무료 웹툰 사이트 TOP 3의 최신 접속 주소를 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: {
     '@type': 'Organization',
     name: '짭토끼',
@@ -58,52 +59,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '무료 웹툰 사이트는 어디인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '2026년 5월 기준, 짭토끼가 검증한 무료 웹툰 사이트 TOP 3는 뉴토끼(국내 최대), 늑대닷컴(다양한 장르), 툰코(모바일 최적화)입니다. 짭토끼 메인 페이지에서 각 사이트의 접속 가능한 최신 주소를 실시간으로 확인할 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '무료 웹툰 사이트가 왜 접속이 안 되나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '저작권 법적 조치로 도메인이 차단되어 접속이 안 되는 경우가 대부분입니다. 사이트가 완전히 없어진 것이 아니라 새 도메인으로 이전한 것이며, 짭토끼에서 새 주소를 자동으로 감지하여 안내합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '무료 웹툰 사이트의 최신 주소는 어디서 확인하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼 메인 페이지의 웹툰 카테고리에서 각 사이트의 실시간 접속 상태(LIVE/DOWN)와 최신 주소를 확인할 수 있습니다. 5분 간격으로 자동 검증되어 항상 최신 정보를 제공합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '무료 웹툰 사이트 이용 시 안전한가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '검색에서 직접 찾은 주소는 피싱이나 악성코드 위험이 있습니다. 짭토끼는 HTTP 상태, SSL 인증서, 응답 속도를 자동 검증하여 안전한 주소만 제공하므로, 짭토끼를 통해 접속하는 것이 가장 안전합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼 말고 다른 무료 웹툰 사이트도 있나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '네, 늑대닷컴과 툰코가 뉴토끼 다음으로 인기 있는 무료 웹툰 사이트입니다. 뉴토끼에 접속이 안 될 때 대안으로 이용할 수 있으며, 짭토끼에서 모든 사이트의 접속 상태를 한눈에 확인 가능합니다.',
-      },
-    },
-  ],
-};
 
 export default function FreeWebtoonPage() {
   return (
@@ -115,10 +70,6 @@ export default function FreeWebtoonPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header */}

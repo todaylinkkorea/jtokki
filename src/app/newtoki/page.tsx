@@ -29,6 +29,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: '뉴토끼 최신 주소 및 접속 방법 안내 (2026년 5월)',
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼' },
   publisher: { '@type': 'Organization', name: '짭토끼' },
   datePublished: '2026-04-29',
@@ -48,53 +49,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '뉴토끼 서비스가 종료된 건가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '뉴토끼는 도메인 차단과 법적 이슈로 인해 기존 주소에서 접속이 불가능해지는 경우가 빈번합니다. 완전한 서비스 종료가 아닌 도메인 변경인 경우가 대부분이며, 짭토끼에서 최신 접속 가능한 주소를 실시간으로 확인할 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼 최신 주소는 어떻게 확인하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼 메인 페이지의 웹툰 카테고리에서 뉴토끼의 실시간 접속 상태와 최신 주소를 확인할 수 있습니다. 도메인이 변경되면 자동으로 감지하여 업데이트됩니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼 대체 사이트는 어디인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼에서 검증한 웹툰 카테고리 Top 3 사이트로는 뉴토끼, 늑대닷컴, 툰코가 있습니다. 각 사이트의 실시간 접속 상태와 응답 속도를 짭토끼에서 확인할 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼 접속 시 안전한 방법은?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼에서 검증된 주소를 통해 접속하는 것이 가장 안전합니다. 검색 엔진에서 찾은 주소는 피싱 사이트일 수 있으므로 주의가 필요합니다. 짭토끼는 SSL 인증서와 HTTP 상태를 자동으로 검증합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼 주소가 자주 바뀌는 이유는?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '저작권 관련 법적 조치로 인해 도메인이 차단되면 새로운 도메인으로 이전하게 됩니다. 이러한 변경은 예고 없이 발생하므로, 짭토끼의 실시간 모니터링을 통해 최신 주소를 확인하는 것이 가장 효과적입니다.',
-      },
-    },
-  ],
-};
-
 export default function NewtokiPage() {
   return (
     <>
@@ -105,10 +59,6 @@ export default function NewtokiPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header nav */}

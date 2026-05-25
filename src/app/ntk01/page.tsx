@@ -31,6 +31,7 @@ const articleSchema = {
   headline: 'ntk01 뉴토끼 최신 주소 — 안전한 접속 방법 안내 (2026)',
   description:
     'ntk01 뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: {
     '@type': 'Organization',
     name: '짭토끼',
@@ -59,53 +60,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'ntk01이 뭔가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'ntk01은 뉴토끼의 최신 도메인 주소 형태입니다. 뉴토끼는 도메인 차단 시 ntk01, ntk02 등의 패턴으로 새 주소를 생성합니다. 짭토끼에서 현재 접속 가능한 최신 주소를 실시간으로 확인할 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'ntk01 주소로 접속이 안 되는데 어떻게 하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'ntk01 주소가 차단되었을 가능성이 높습니다. 뉴토끼는 도메인이 자주 변경되므로, 짭토끼 메인 페이지에서 현재 접속 가능한 최신 주소를 확인하세요. 짭토끼는 5분 간격으로 자동 헬스체크를 수행합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'ntk01 외에 뉴토끼 접속 주소가 또 있나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '네, 뉴토끼는 차단될 때마다 ntk02, ntk03 등 새로운 도메인으로 이전합니다. 짭토끼는 이러한 도메인 변경을 자동으로 감지하여 항상 최신 주소를 표시합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'ntk01 검색하면 나오는 사이트가 진짜 뉴토끼인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '검색 결과에는 피싱 사이트가 많이 섞여 있습니다. ntk01을 사칭하는 가짜 사이트에서 개인정보를 탈취하거나 악성코드를 유포할 수 있습니다. 짭토끼에서 SSL 인증서와 HTTP 상태가 검증된 주소를 통해 접속하는 것이 가장 안전합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼 주소가 바뀌면 어떻게 알 수 있나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼의 텔레그램 알림을 구독하면 뉴토끼의 도메인이 변경될 때 실시간으로 새 주소를 알림받을 수 있습니다. 더 이상 ntk01, ntk02를 직접 검색할 필요가 없습니다.',
-      },
-    },
-  ],
-};
-
 export default function Ntk01Page() {
   return (
     <>
@@ -116,10 +70,6 @@ export default function Ntk01Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header */}

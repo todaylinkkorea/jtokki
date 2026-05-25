@@ -27,6 +27,7 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 5월)',
   description: '짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-05-13', dateModified: '2026-05-13',
@@ -41,22 +42,11 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org', '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: '짭토끼 최신 주소는 어디인가요?', acceptedAnswer: { '@type': 'Answer', text: '짭토끼 공식 주소는 짭토끼.com (xn--h10bl69b7nf.com)입니다. 이 외의 짭토끼 주소는 사칭 사이트일 수 있으니 반드시 공식 주소를 확인하세요.' } },
-    { '@type': 'Question', name: '짭토끼가 뭔가요?', acceptedAnswer: { '@type': 'Answer', text: '짭토끼는 뉴토끼를 비롯한 주요 사이트의 최신 접속 주소를 실시간으로 검증하여 안내하는 서비스입니다. 5분 간격 자동 헬스체크로 검증된 안전한 주소만 제공합니다.' } },
-    { '@type': 'Question', name: '짭토끼에서 뉴토끼 주소를 어떻게 확인하나요?', acceptedAnswer: { '@type': 'Answer', text: '짭토끼 메인 페이지의 웹툰 카테고리에서 뉴토끼의 실시간 접속 상태와 최신 주소를 확인할 수 있습니다. 도메인이 변경되면 자동으로 감지하여 업데이트됩니다.' } },
-    { '@type': 'Question', name: '짭토끼를 사칭하는 사이트가 있나요?', acceptedAnswer: { '@type': 'Answer', text: '네, 짭토끼를 사칭하는 피싱 사이트가 존재합니다. 반드시 짭토끼.com (xn--h10bl69b7nf.com) 도메인인지 확인하고, 주소창의 자물쇠(🔒) 아이콘을 체크하세요.' } },
-  ],
-};
-
 export default function JtokkiAddressPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">

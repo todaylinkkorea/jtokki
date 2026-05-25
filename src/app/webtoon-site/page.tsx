@@ -30,6 +30,7 @@ const articleSchema = {
   headline: '웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
   description:
     '뉴토끼, 늑대닷컴, 툰코 등 접속 가능한 웹툰 사이트의 최신 주소를 실시간으로 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: {
     '@type': 'Organization',
     name: '짭토끼',
@@ -58,44 +59,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '지금 접속 가능한 웹툰 사이트는 어디인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '2026년 5월 현재, 짭토끼가 실시간 검증한 접속 가능한 웹툰 사이트 TOP 3는 뉴토끼, 늑대닷컴, 툰코입니다. 짭토끼 메인 페이지에서 각 사이트의 최신 주소와 접속 상태를 실시간으로 확인할 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '웹툰 사이트 주소가 자주 바뀌는 이유는?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '저작권 관련 법적 조치로 도메인이 차단되면 새 도메인으로 이전합니다. 짭토끼는 5분 간격으로 자동 헬스체크를 수행하여 도메인 변경을 실시간으로 감지하고, 항상 최신 접속 주소를 제공합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '웹툰 사이트 순위는 어떻게 정해지나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼의 웹툰 사이트 TOP 3는 서버 응답 속도, 최근 30일 업타임(가동률), 사용자 추천수를 종합적으로 반영합니다. 광고비와 무관하게 객관적인 데이터만으로 순위가 결정됩니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '검색에서 찾은 웹툰 사이트 주소가 안전한가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '검색 엔진 결과에는 피싱 사이트나 악성코드 유포 링크가 섞여 있어 위험합니다. 짭토끼는 HTTP 상태 코드, SSL 인증서, 응답 속도를 자동으로 검증하여 안전한 주소만 제공합니다.',
-      },
-    },
-  ],
-};
 
 export default function WebtoonSitePage() {
   return (
@@ -107,10 +70,6 @@ export default function WebtoonSitePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header */}

@@ -12,34 +12,11 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 };
 
-const faqSchema = {
+const breadcrumbSchema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '짭토끼에서 검증된 사이트는 안전한가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼는 HTTP 상태, SSL 인증서, 응답 속도를 자동으로 검증합니다. 단, 짭토끼는 외부 사이트의 콘텐츠 자체를 보증하지는 않으며, 접속 가능 여부와 기술적 안전성만을 확인합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '사이트 접속 상태는 어떻게 확인하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '각 사이트 옆에 표시된 상태 뱃지로 확인할 수 있습니다. LIVE는 현재 접속 가능, CHANGED는 주소 변경, DOWN은 접속 불가 상태를 의미합니다. 응답 속도(ms)도 함께 표시됩니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '사이트 주소가 변경되면 어떻게 알 수 있나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼의 모니터링 시스템이 도메인 변경을 자동으로 감지하여 즉시 업데이트합니다. 텔레그램 알림 서비스를 구독하면 즐겨찾기한 사이트의 주소 변경 시 실시간으로 새 주소를 안내받을 수 있습니다.',
-      },
-    },
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '홈', item: SITE_URL },
   ],
 };
 
@@ -63,7 +40,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

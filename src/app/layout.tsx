@@ -55,7 +55,7 @@ const organizationSchema = {
   logo: `${SITE_URL}/logo.png`,
   description: '실시간 헬스체크로 검증된 안전한 사이트 주소를 제공하는 링크 디렉토리 서비스',
   sameAs: [FACEBOOK_URL, GITHUB_URL],
-  foundingDate: '2024',
+  foundingDate: '2024-01-01',
 };
 
 export default function RootLayout({
@@ -162,11 +162,10 @@ export default function RootLayout({
           </div>
 
           <p className="footer__disclaimer">
-            &copy; 2024 짭토끼. All rights reserved. 이 사이트의 정보는 참고용이며, 최종 결정은 사용자의 책임입니다.
-          </p>
+          &copy; 2024-2026 짭토끼. All rights reserved. 이 사이트의 정보는 참고용이며, 최종 결정은 사용자의 책임입니다.
+        </p>
         </footer>
       </body>
     </html>
   );
 }
-

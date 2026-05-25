@@ -26,6 +26,7 @@ const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 5월)',
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
+  image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-05-13', dateModified: '2026-05-23',
@@ -40,22 +41,11 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org', '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: '뉴토끼 최신 주소는 어디인가요?', acceptedAnswer: { '@type': 'Answer', text: '뉴토끼 최신 주소는 도메인 차단으로 수시로 변경됩니다. 짭토끼 메인 페이지의 웹툰 카테고리에서 현재 접속 가능한 최신 주소를 실시간으로 확인할 수 있습니다.' } },
-    { '@type': 'Question', name: '뉴토끼 주소가 자주 바뀌는 이유는?', acceptedAnswer: { '@type': 'Answer', text: '저작권 관련 법적 조치로 도메인이 차단되면 운영자가 새 도메인으로 이전합니다. 짭토끼는 이러한 변경을 자동으로 감지합니다.' } },
-    { '@type': 'Question', name: '뉴토끼 최신 주소를 안전하게 확인하는 방법은?', acceptedAnswer: { '@type': 'Answer', text: '검색에서 직접 찾은 주소는 피싱 사이트일 수 있습니다. 짭토끼에서 SSL 인증서와 HTTP 상태가 검증된 주소를 통해 접속하는 것이 가장 안전합니다.' } },
-    { '@type': 'Question', name: '뉴토끼 주소 변경 알림을 받을 수 있나요?', acceptedAnswer: { '@type': 'Answer', text: '짭토끼의 텔레그램 알림을 구독하면 뉴토끼 도메인이 변경될 때 실시간으로 새 주소를 알림받을 수 있습니다.' } },
-  ],
-};
-
 export default function NewtokiAddressPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">

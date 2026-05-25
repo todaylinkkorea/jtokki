@@ -17,6 +17,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: '짭토끼 — 실시간 검증 사이트 모음의 새로운 기준',
   description: '짭토끼의 실시간 모니터링 시스템과 검증 기준에 대해 알아보세요.',
+  image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼' },
   publisher: { '@type': 'Organization', name: '짭토끼' },
   datePublished: '2026-04-28',
@@ -32,45 +33,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '짭토끼는 어떤 서비스인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼는 다양한 카테고리의 인기 사이트들을 실시간으로 모니터링하고, 현재 정상적으로 접속 가능한 사이트만을 선별하여 제공하는 검증된 링크 디렉토리 서비스입니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '사이트 주소가 변경되면 어떻게 알 수 있나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼의 텔레그램 알림 서비스를 구독하시면, 즐겨찾기한 사이트의 주소가 변경될 때 실시간으로 알림을 받으실 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Top 3 선정 기준은 무엇인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '서버 응답 속도, 최근 30일 업타임, 사용자 추천수를 종합적으로 반영하여 각 카테고리별 상위 3개 사이트를 선정합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '실시간 모니터링은 어떻게 작동하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼는 자동화된 헬스체크 시스템을 통해 등록된 모든 사이트의 접속 상태, 응답 속도, 도메인 변경 여부를 평균 5분 간격으로 확인합니다.',
-      },
-    },
-  ],
-};
-
 export default function GuidePage() {
   return (
     <>
@@ -81,10 +43,6 @@ export default function GuidePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header nav */}

@@ -10,13 +10,21 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
       },
-      // Explicitly block AI training crawlers
+      // Block AI training crawlers (per Agentic-SEO-Skill critical rule #8)
+      {
+        userAgent: 'GPTBot',
+        disallow: '/',
+      },
       {
         userAgent: 'ChatGPT-User',
         disallow: '/',
       },
       {
-        userAgent: 'PerplexityBot',
+        userAgent: 'Google-Extended',
+        disallow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
         disallow: '/',
       },
       {
@@ -24,9 +32,22 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
       {
-        userAgent: 'FacebookBot',
+        userAgent: 'PerplexityBot',
         disallow: '/',
       },
+      {
+        userAgent: 'Bytespider',
+        disallow: '/',
+      },
+      {
+        userAgent: 'CCBot',
+        disallow: '/',
+      },
+      {
+        userAgent: 'Applebot-Extended',
+        disallow: '/',
+      },
+      // Note: FacebookBot is intentionally ALLOWED for OG card rendering
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

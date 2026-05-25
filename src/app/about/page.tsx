@@ -31,6 +31,7 @@ const articleSchema = {
   headline: '짭토끼 — 뉴토끼 최신 주소를 찾는 가장 안전한 방법 (2026)',
   description:
     '뉴토끼 서비스 종료 후 짭토끼에서 실시간 검증된 최신 접속 주소를 확인하는 방법을 안내합니다.',
+  image: `${SITE_URL}/images/about/jtokki-main-page.webp`,
   author: {
     '@type': 'Organization',
     name: '짭토끼',
@@ -59,60 +60,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: '짭토끼가 뭔가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼는 뉴토끼를 비롯한 주요 웹툰·드라마·커뮤니티 사이트의 최신 접속 주소를 실시간으로 검증하여 안내하는 서비스입니다. 뉴토끼 서비스가 종료되거나 도메인이 변경될 때, 짭토끼에서 안전한 최신 주소를 확인할 수 있습니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '짭토끼에서 뉴토끼 주소를 어떻게 확인하나요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼 메인 페이지의 웹툰 카테고리에서 뉴토끼의 실시간 접속 상태(LIVE/CHANGED/DOWN)와 최신 주소를 확인할 수 있습니다. 도메인이 변경되면 자동으로 감지하여 즉시 업데이트됩니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '짭토끼 공식 주소는 어디인가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼 공식 주소는 짭토끼.com (xn--h10bl69b7nf.com)입니다. 이 외의 주소는 사칭 사이트일 수 있으니 반드시 공식 주소를 통해 접속하세요.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '짭토끼는 안전한가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '짭토끼는 HTTP 상태 코드, SSL 인증서, 응답 속도를 자동으로 검증합니다. 검색 엔진에서 직접 찾은 주소보다 짭토끼를 통해 접속하는 것이 피싱 위험을 줄이는 가장 안전한 방법입니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '뉴토끼가 완전히 없어진 건가요?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '뉴토끼는 도메인 차단이나 법적 이슈로 기존 주소가 막히는 경우가 많지만, 새로운 도메인으로 이전하여 운영을 재개하는 경우가 대부분입니다. 짭토끼는 이러한 도메인 변경을 실시간으로 추적합니다.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '짭토끼 말고 뉴토끼 주소를 찾는 다른 방법은?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '검색 엔진, SNS, 커뮤니티 등에서도 찾을 수 있지만, 피싱 사이트나 악성코드 유포 링크가 섞여 있어 위험합니다. 짭토끼는 자동화된 헬스체크로 검증된 주소만 제공하므로 가장 안전합니다.',
-      },
-    },
-  ],
-};
 
 export default function AboutPage() {
   return (
@@ -124,10 +71,6 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header */}
