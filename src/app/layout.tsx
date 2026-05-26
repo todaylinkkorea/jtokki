@@ -1,6 +1,18 @@
 import type { Metadata } from 'next';
 import { SITE_URL, GITHUB_URL, FACEBOOK_URL } from '@/lib/constants';
+import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
+
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -64,23 +76,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        {/* Preconnect to Google Fonts for faster font loading */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         {/* Organization schema — sitewide entity SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         {/* Privacy-friendly analytics by Plausible — with custom event tracking */}
-        <script async src="https://plausible.taskagenticai.com/js/pa-gicDJpf9v7C58om7zemkU.js" />
-        <script
+        <Script
+          async
+          src="https://plausible.taskagenticai.com/js/pa-gicDJpf9v7C58om7zemkU.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="plausible-tracking"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: [
               // Init Plausible
