@@ -12,8 +12,12 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/clips/',
       },
       {
+        userAgent: 'Googlebot',
+        allow: '/clips/',
+      },
+      {
         userAgent: 'Googlebot-Video',
-        disallow: '/clips/',
+        allow: '/clips/',
       },
       // Block AI training crawlers (per Agentic-SEO-Skill critical rule #8)
       {
