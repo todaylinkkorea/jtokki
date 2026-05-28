@@ -49,3 +49,10 @@ next-env.d.ts
 AGENTS.md
 CLAUDE.md
 claude.md
+
+# gemini and agent logs
+.gemini/
+ACTION-PLAN.md
+FULL-AUDIT-REPORT.md
+action-plan.md
+full-audit-report.md
