@@ -229,7 +229,7 @@ export function NewtokiCTA() {
 
       {/* cu2day 홍보 링크 */}
       <p className="ntk-cta__sub">
-        <a href="https://cu2day.com/?utm_source=jtokki&utm_medium=referral" target="_blank" rel="noopener">
+        <a href="https://cu2day.com/?utm_source=jtokki&utm_medium=referral" target="_blank" rel="sponsored noopener noreferrer">
           매일 업데이트되는 세상 모든 AI 영상 cu2day.com
         </a>
       </p>
@@ -248,7 +248,7 @@ export function NewtokiCTA() {
             <a 
               href={PROMO_TARGET_URL} 
               target="_blank" 
-              rel="noopener" 
+              rel="sponsored noopener noreferrer" 
               onClick={handlePromoClick}
               className="ntk-cta__modal-video-link"
             >

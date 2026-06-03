@@ -6,19 +6,19 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiCTA } from '@/components/NewtokiCTA';
 
 export const metadata: Metadata = {
-  title: '뉴토끼 최신 주소 및 접속 방법 안내 (2026년 5월)',
+  title: '뉴토끼 주소 (2026년 6월) — 짭토끼 실시간 검증',
   description:
-    '뉴토끼 최신 주소를 지금 바로 확인하세요. 2026년 5월 기준 접속 가능한 뉴토끼 최신 도메인을 짭토끼가 실시간으로 검증합니다. 뉴토끼 주소, 뉴토끼 바로가기, 뉴토끼 대체 사이트.',
+    '뉴토끼 신규 주소를 지금 바로 확인하세요. 짭토끼가 2026년 6월 기준 접속 가능한 뉴토끼 도메인을 실시간으로 검증합니다. 뉴토끼 주소, 뉴토끼 바로가기, 뉴토끼 대체 사이트 안내.',
   alternates: { canonical: `${SITE_URL}/newtoki` },
   keywords: [
-    '뉴토끼', '뉴토끼 주소', '뉴토끼 최신주소', '뉴토끼 바로가기',
+    '뉴토끼', '뉴토끼 주소', '뉴토끼 신규주소', '뉴토끼 바로가기',
     '뉴토끼 접속', '뉴토끼 서비스종료', '뉴토끼 대체',
     '짭토끼', '짭토끼 주소', '웹툰 사이트', '무료 웹툰',
     '늑대닷컴', '툰코', '웹툰 주소',
   ],
   openGraph: {
-    title: '뉴토끼 최신 주소 및 접속 방법 (2026년 5월)',
-    description: '뉴토끼 최신 접속 주소를 지금 바로 확인 — 짭토끼가 실시간 검증한 안전한 주소를 안내합니다.',
+    title: '뉴토끼 주소 (2026년 6월) — 짭토끼 실시간 검증',
+    description: '뉴토끼 실시간 접속 주소를 지금 바로 확인 — 짭토끼가 실시간 검증한 안전한 주소를 안내합니다.',
     type: 'article',
     locale: 'ko_KR',
   },
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '뉴토끼 최신 주소 및 접속 방법 안내 (2026년 5월)',
-  description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
+  headline: '뉴토끼 주소 (2026년 6월) — 짭토끼 실시간 검증',
+  description: '뉴토끼 실시간 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
   image: `${SITE_URL}/logo.png`,
-  author: { '@type': 'Organization', name: '짭토끼' },
-  publisher: { '@type': 'Organization', name: '짭토끼' },
+  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+  publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-04-29',
-  dateModified: '2026-05-23',
+  dateModified: '2026-06-03',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/newtoki`,
@@ -97,7 +97,7 @@ export default function NewtokiPage() {
             <Link href="/">홈</Link> &gt; 뉴토끼 최신 주소
           </nav>
 
-          <h1 id="intro">뉴토끼 최신 주소 및 접속 방법 안내 (2026년 5월)</h1>
+          <h1 id="intro">뉴토끼 주소 (2026년 6월) — 짭토끼 실시간 검증</h1>
 
           <p>
             <strong>뉴토끼</strong>는 국내에서 가장 많은 사용자를 보유한 웹툰 사이트 중 하나입니다.

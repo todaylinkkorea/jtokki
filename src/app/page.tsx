@@ -8,8 +8,12 @@ import { FAQItem } from '@/components/FAQItem';
 export const metadata: Metadata = {
   title: '짭토끼 - 실시간 검증된 사이트 모음 | 짭토끼 주소 바로가기',
   description:
-    '짭토끼가 실시간으로 검증한 살아있는 사이트만 모았습니다. 웹툰, 드라마, 커뮤니티 등 카테고리별 Top 3 추천과 실시간 접속 상태를 확인하세요.',
+    '짭토끼 공식 사이트입니다. 짭토끼가 실시간으로 검증한 살아있는 사이트만 모았습니다. 뉴토끼, 늑대닷컴, 툰코 등 웹툰·드라마·커뮤니티 카테고리별 짭토끼 주소 바로가기를 제공합니다.',
   alternates: { canonical: SITE_URL },
+  keywords: [
+    '짭토끼', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트', '짭토키',
+    '뉴토끼 주소', '사이트 모음', '링크 모음', '웹툰 사이트',
+  ],
 };
 
 const breadcrumbSchema = {
@@ -33,6 +37,29 @@ const siteSchema = {
     logo: `${SITE_URL}/logo.png`,
     sameAs: [FACEBOOK_URL, GITHUB_URL],
   },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: '짭토끼 - 실시간 검증된 사이트 모음 | 짭토끼 주소 바로가기',
+  description: '짭토끼가 실시간 헬스체크로 검증한 살아있는 사이트만 모았습니다. 뉴토끼, 늑대닷컴, 툰코 등 카테고리별 최신 주소를 제공합니다.',
+  image: `${SITE_URL}/logo.png`,
+  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+  publisher: {
+    '@type': 'Organization',
+    name: '짭토끼',
+    url: SITE_URL,
+    logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+  },
+  datePublished: '2024-01-01',
+  dateModified: new Date().toISOString().split('T')[0],
+  mainEntityOfPage: { '@type': 'WebPage', '@id': SITE_URL },
 };
 
 export default function HomePage() {
@@ -45,6 +72,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
       {/* ===== HERO ===== */}
@@ -61,9 +92,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          <h1 className="hero__tagline">
+          {/* SEO용 H1 — 짭토끼 키워드 명시적 타겟. visually-hidden 처리로 디자인 유지 */}
+          <h1 className="sr-only">짭토끼 - 실시간 검증된 사이트 주소 모음 | 짭토끼 주소 바로가기</h1>
+          <p className="hero__tagline" aria-hidden="true">
             진짜 <strong>살아있는 사이트만,</strong>
-          </h1>
+          </p>
           <p className="hero__tagline-sub">
             <TypingEffect text="짭토끼가 검증합니다" highlightWord="검증" />
           </p>
