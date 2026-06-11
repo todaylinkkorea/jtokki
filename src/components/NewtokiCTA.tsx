@@ -148,7 +148,7 @@ export function NewtokiCTA() {
 
   return (
     <section className="ntk-cta" aria-label="뉴토끼 최신 주소 안내">
-      {/* 주소 변경 내역 */}
+      {/* 주소 변경 내역 — 날짜만 표시 (도메인 텍스트 제거로 스팸 신호 방지) */}
       <div className="ntk-cta__history">
         <p className="ntk-cta__history-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -161,14 +161,7 @@ export function NewtokiCTA() {
           {ADDRESS_HISTORY.map((entry) => (
             <li key={entry.date} className="ntk-cta__history-item">
               <span className="ntk-cta__history-date">{entry.date}</span>
-              <span className="ntk-cta__history-change">
-                <span className="ntk-cta__history-old">{entry.from}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" />
-                  <path d="M12 5l7 7-7 7" />
-                </svg>
-                <span className="ntk-cta__history-new">{entry.to}</span>
-              </span>
+              <span className="ntk-cta__history-label">주소 변경됨</span>
             </li>
           ))}
         </ul>
@@ -178,7 +171,7 @@ export function NewtokiCTA() {
       <a
         href={currentUrl}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="nofollow noopener noreferrer"
         className="ntk-cta__button"
         id="newtoki-cta-button"
       >
@@ -190,49 +183,41 @@ export function NewtokiCTA() {
         </svg>
       </a>
 
-      {/* 영상 광고 배너 구역 - 크롤러 봇에 대해 정적 대체 이미지 제공 및 LCP/CLS 방지 */}
-      <div 
-        ref={containerRef} 
-        className="ntk-cta__promo-container"
-        style={{ aspectRatio: '16/9' }}
-      >
-        {showVideoAd ? (
-          <button 
-            type="button"
-            onClick={() => setIsModalOpen(true)}
-            className="ntk-cta__promo-btn-trigger"
-            aria-label="AI 동영상 광고 재생"
+      {/* 영상 광고 배너 구역 — 봇에게는 완전히 숨겨 콘텐츠 대비 광고 비율 개선 */}
+      {showVideoAd && (
+        <>
+          <div 
+            ref={containerRef} 
+            className="ntk-cta__promo-container"
+            style={{ aspectRatio: '16/9' }}
           >
-            <img 
-              src="/images/cu2day_banner.webp" 
-              alt="cu2day AI Video Feed" 
-              className="ntk-cta__promo-img"
-            />
-            <span className="ntk-cta__promo-play-overlay">
-              <span className="ntk-cta__promo-play-icon">▶</span>
-              <span className="ntk-cta__promo-play-text">AI 비디오 재생</span>
-            </span>
-            <span className="ntk-cta__promo-badge">SPONSOR</span>
-          </button>
-        ) : (
-          // 구글 봇 또는 SSR 상태에서는 비디오 유도 없이 깨끗한 대체 이미지 카드만 렌더링
-          <div className="ntk-cta__promo-static">
-            <img 
-              src="/images/cu2day_banner.webp" 
-              alt="cu2day AI Video Feed" 
-              className="ntk-cta__promo-img"
-            />
-            <span className="ntk-cta__promo-badge">SPONSOR</span>
+            <button 
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="ntk-cta__promo-btn-trigger"
+              aria-label="AI 동영상 광고 재생"
+            >
+              <img 
+                src="/images/cu2day_banner.webp" 
+                alt="cu2day AI Video Feed" 
+                className="ntk-cta__promo-img"
+              />
+              <span className="ntk-cta__promo-play-overlay">
+                <span className="ntk-cta__promo-play-icon">▶</span>
+                <span className="ntk-cta__promo-play-text">AI 비디오 재생</span>
+              </span>
+              <span className="ntk-cta__promo-badge">SPONSOR</span>
+            </button>
           </div>
-        )}
-      </div>
 
-      {/* cu2day 홍보 링크 */}
-      <p className="ntk-cta__sub">
-        <a href="https://cu2day.com/?utm_source=jtokki&utm_medium=referral" target="_blank" rel="sponsored noopener noreferrer">
-          매일 업데이트되는 세상 모든 AI 영상 cu2day.com
-        </a>
-      </p>
+          {/* cu2day 홍보 링크 */}
+          <p className="ntk-cta__sub">
+            <a href="https://cu2day.com/?utm_source=jtokki&utm_medium=referral" target="_blank" rel="sponsored nofollow noopener noreferrer">
+              매일 업데이트되는 세상 모든 AI 영상 cu2day.com
+            </a>
+          </p>
+        </>
+      )}
 
       {/* 비디오 모달 (구글 봇 및 SSR 렌더링에서 완벽 차단) */}
       {showVideoAd && isModalOpen && activeClip && (

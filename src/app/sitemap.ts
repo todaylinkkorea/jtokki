@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/newtoki`,
-      lastModified: '2026-05-15',
+      lastModified: '2026-06-11',
       changeFrequency: 'daily',
       priority: 0.9,
     },

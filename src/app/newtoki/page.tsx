@@ -21,6 +21,12 @@ export const metadata: Metadata = {
     description: '뉴토끼 실시간 접속 주소를 지금 바로 확인 — 짭토끼가 실시간 검증한 안전한 주소를 안내합니다.',
     type: 'article',
     locale: 'ko_KR',
+    url: `${SITE_URL}/newtoki`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
+  },
+  other: {
+    'article:published_time': '2026-04-29',
+    'article:modified_time': '2026-06-11',
   },
 };
 
@@ -33,7 +39,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-04-29',
-  dateModified: '2026-06-03',
+  dateModified: '2026-06-11',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/newtoki`,
@@ -131,6 +137,11 @@ export default function NewtokiPage() {
           </ol>
 
           <p>
+            처음 방문이라면 <Link href="/guide">짭토끼 이용 가이드</Link>를 먼저 읽어보세요.
+            짭토끼의 실시간 검증 시스템이 어떻게 작동하는지 자세히 안내합니다.
+          </p>
+
+          <p>
             짭토끼는 자동화된 헬스체크 시스템을 통해 뉴토끼의 HTTP 상태 코드, 응답 속도,
             SSL 인증서, 리다이렉트 여부까지 확인합니다. 도메인이 변경(301/302 리다이렉트)되면
             자동으로 새 주소를 감지하여 업데이트합니다.
@@ -160,6 +171,7 @@ export default function NewtokiPage() {
 
           <p>
             뉴토끼에 접속이 불가능한 경우, 짭토끼에서 검증한 대체 웹툰 사이트를 이용할 수 있습니다.
+            <Link href="/webtoon-site">웹툰 사이트 전체 목록</Link>에서 더 많은 대체 사이트를 확인할 수 있으며,
             아래는 짭토끼의 웹툰 카테고리에서 실시간 검증된 <strong>Top 3 사이트</strong>입니다:
           </p>
 
@@ -178,6 +190,7 @@ export default function NewtokiPage() {
             <Link href="/"> 짭토끼 메인 페이지</Link>에서 실시간으로 확인할 수 있습니다.
             짭토끼는 서버 응답 속도, 업타임, 사용자 추천수를 기반으로 순위를 선정하며,
             광고와 무관한 객관적 데이터로만 운영됩니다.
+            <Link href="/about">짭토끼 소개 페이지</Link>에서 운영 철학과 검증 방식을 확인할 수 있습니다.
           </p>
 
           <h2 id="safe-access">안전한 접속을 위한 주의사항</h2>
