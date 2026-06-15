@@ -136,6 +136,7 @@ export default function RootLayout({
             <a href="/webtoon-site">웹툰 사이트</a>
             <a href="/webtoon-free">웹툰 무료</a>
             <a href="/free-webtoon">무료 웹툰</a>
+            <a href="/jtokki">짭토끼</a>
             <a href="/jtokki-address">짭토끼 주소</a>
           </nav>
 

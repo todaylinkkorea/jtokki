@@ -6,7 +6,7 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
-  title: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 5월)',
+  title: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 6월)',
   description:
     '짭토끼 최신 주소를 찾고 계신가요? 짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다. 짭토끼 주소, 짭토끼 바로가기, 짭토끼 사이트.',
   alternates: { canonical: `${SITE_URL}/jtokki-address` },
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
 
 const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
-  headline: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 5월)',
+  headline: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 6월)',
   description: '짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다.',
   image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  datePublished: '2026-05-13', dateModified: '2026-05-13',
+  datePublished: '2026-05-13', dateModified: '2026-06-15',
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki-address` },
 };
 
@@ -78,7 +78,7 @@ export default function JtokkiAddressPage() {
             <Link href="/">홈</Link> &gt; 짭토끼 최신 주소
           </nav>
 
-          <h1 id="intro">짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 5월)</h1>
+          <h1 id="intro">짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 6월)</h1>
 
           <p>
             <strong>짭토끼 최신 주소</strong>를 검색하셨나요? 짭토끼는 뉴토끼를 포함한 주요 사이트의

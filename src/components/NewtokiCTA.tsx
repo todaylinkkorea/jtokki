@@ -47,7 +47,12 @@ function getNewtokiUrl(): string {
   return newtoki?.url ?? 'https://ntk01.com';
 }
 
-export function NewtokiCTA() {
+interface NewtokiCTAProps {
+  /** Plausible Analytics 이벤트에 기록할 페이지 식별자. 기본값: '/newtoki' */
+  page?: string;
+}
+
+export function NewtokiCTA({ page = '/newtoki' }: NewtokiCTAProps) {
   const currentUrl = getNewtokiUrl();
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeClip, setActiveClip] = useState<{ id: string; mp4: string; webm: string } | null>(null);
@@ -115,7 +120,7 @@ export function NewtokiCTA() {
           } catch (e) {}
 
           // Plausible Analytics 노출 이벤트 전송
-          sendPlausible('Promo View', { promo_id: activeClip.id, page: '/newtoki' });
+          sendPlausible('Promo View', { promo_id: activeClip.id, page });
 
           observer.disconnect();
         }
@@ -140,7 +145,7 @@ export function NewtokiCTA() {
       localStorage.setItem('promo_stats', JSON.stringify(stats));
     } catch (e) {}
 
-    sendPlausible('Promo Click', { promo_id: activeClip.id, page: '/newtoki' });
+    sendPlausible('Promo Click', { promo_id: activeClip.id, page });
   };
 
   // 구글 봇이거나 SSR/하이드레이션 이전 상태인 경우 비디오 요소 노출 완전 거부

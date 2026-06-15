@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   other: {
     'article:published_time': '2026-04-29',
-    'article:modified_time': '2026-06-11',
+    'article:modified_time': '2026-06-15',
   },
 };
 
@@ -39,7 +39,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-04-29',
-  dateModified: '2026-06-11',
+  dateModified: '2026-06-15',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/newtoki`,
@@ -257,6 +257,23 @@ export default function NewtokiPage() {
               최신 주소를 확인하는 것이 가장 효과적입니다.
             </FAQItem>
           </div>
+
+          {/* 관련 콘텐츠 */}
+          <h2 id="related">관련 콘텐츠</h2>
+          <ul>
+            <li>
+              <Link href="/jtokki">짭토끼 — 실시간 검증 서비스 소개</Link>
+            </li>
+            <li>
+              <Link href="/newtoki-address">뉴토끼 최신 주소 변경 이력</Link>
+            </li>
+            <li>
+              <Link href="/ntk01">ntk01 뉴토끼 최신 주소 안내</Link>
+            </li>
+            <li>
+              <Link href="/webtoon-site">웹툰 사이트 전체 목록</Link>
+            </li>
+          </ul>
 
           {/* CTA */}
           <div className="article-cta">

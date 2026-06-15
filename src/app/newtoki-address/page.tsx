@@ -6,9 +6,9 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
-  title: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 5월)',
+  title: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 6월)',
   description:
-    '뉴토끼 최신 주소를 찾고 계신가요? 2026년 5월 현재 접속 가능한 뉴토끼 최신 도메인을 짭토끼가 실시간으로 검증합니다. 뉴토끼 최신 주소, 뉴토끼 새주소, 뉴토끼 바로가기.',
+    '뉴토끼 최신 주소를 찾고 계신가요? 2026년 6월 현재 접속 가능한 뉴토끼 최신 도메인을 짭토끼가 실시간으로 검증합니다. 뉴토끼 최신 주소, 뉴토끼 새주소, 뉴토끼 바로가기.',
   alternates: { canonical: `${SITE_URL}/newtoki-address` },
   keywords: [
     '뉴토끼 최신 주소', '뉴토끼 최신주소', '뉴토끼 새주소', '뉴토끼 주소',
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
 
 const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
-  headline: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 5월)',
+  headline: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 6월)',
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
   image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  datePublished: '2026-05-13', dateModified: '2026-05-23',
+  datePublished: '2026-05-13', dateModified: '2026-06-15',
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/newtoki-address` },
 };
 
@@ -77,11 +77,10 @@ export default function NewtokiAddressPage() {
             <Link href="/">홈</Link> &gt; 뉴토끼 최신 주소
           </nav>
 
-          <h1 id="intro">뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 5월)</h1>
+          <h1 id="intro">뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 6월)</h1>
 
           <p>
             <strong>뉴토끼 최신 주소</strong>를 찾고 계신가요? 뉴토끼는 도메인 차단으로 인해 주소가 수시로 변경됩니다.
-            이전에 사용하던 주소로 접속이 안 된다면, 도메인이 차단되어 새 주소로 이전된 것입니다.
           </p>
           <p>
             <strong>짭토끼</strong>는 뉴토끼의 접속 상태를 <strong>5분 간격으로 자동 검증</strong>하여,
