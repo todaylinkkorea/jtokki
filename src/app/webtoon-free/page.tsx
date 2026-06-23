@@ -6,7 +6,7 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
-  title: '웹툰 무료로 보는 법 — 접속 가능한 무료 웹툰 사이트 (2026년 5월)',
+  title: '웹툰 무료로 보는 법 — 접속 가능한 무료 웹툰 사이트 (2026년 6월)',
   description:
     '무료 웹툰 사이트를 찾고 계신가요? 지금 접속 가능한 무료 웹툰 사이트 최신 주소를 짭토끼가 실시간 검증합니다. 뉴토끼, 늑대닷컴, 툰코 접속 방법 안내.',
   alternates: { canonical: `${SITE_URL}/webtoon-free` },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '웹툰 무료로 보는 법 — 접속 가능한 무료 웹툰 사이트 (2026년 5월)',
+  headline: '웹툰 무료로 보는 법 — 접속 가능한 무료 웹툰 사이트 (2026년 6월)',
   description:
     '무료 웹툰 사이트의 최신 접속 주소와 안전한 이용 방법을 안내합니다.',
   image: `${SITE_URL}/logo.png`,
@@ -43,7 +43,7 @@ const articleSchema = {
     url: SITE_URL,
   },
   datePublished: '2026-05-11',
-  dateModified: '2026-05-11',
+  dateModified: '2026-06-23',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/webtoon-free`,
@@ -108,7 +108,7 @@ export default function WebtoonFreePage() {
           </nav>
 
           <h1 id="intro">
-            웹툰 무료로 보는 법 — 지금 접속 가능한 사이트 안내 (2026년 5월)
+            웹툰 무료로 보는 법 — 지금 접속 가능한 사이트 안내 (2026년 6월)
           </h1>
 
           <p>
@@ -118,7 +118,7 @@ export default function WebtoonFreePage() {
           </p>
 
           <p>
-            이 페이지에서는 <strong>2026년 5월 현재</strong> 접속 가능한 무료
+            이 페이지에서는 <strong>2026년 6월 현재</strong> 접속 가능한 무료
             웹툰 사이트의 최신 주소와, 앞으로 주소가 바뀌더라도 항상 최신
             주소를 찾는 방법을 안내합니다.
           </p>
@@ -135,7 +135,7 @@ export default function WebtoonFreePage() {
           </div>
 
           {/* ===== 사이트 목록 ===== */}
-          <h2 id="sites">무료 웹툰 사이트 — 2026년 5월 접속 가능 목록</h2>
+          <h2 id="sites">무료 웹툰 사이트 — 2026년 6월 접속 가능 목록</h2>
 
           <p>
             아래는 짭토끼가 <strong>실시간으로 검증</strong>한, 현재 접속

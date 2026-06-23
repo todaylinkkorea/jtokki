@@ -6,7 +6,7 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiCTA } from '@/components/NewtokiCTA';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
-const TODAY = '2026-06-15';
+const TODAY = '2026-06-23';
 const PUBLISHED = '2026-06-13';
 
 export const metadata: Metadata = {
@@ -185,7 +185,7 @@ export default function JtokkiPage() {
               marginBottom: 8,
             }}
           >
-            최종 업데이트: <time dateTime={TODAY}>2026년 6월 15일</time>
+            최종 업데이트: <time dateTime={TODAY}>2026년 6월 23일</time>
           </p>
 
           <h1 id="intro">

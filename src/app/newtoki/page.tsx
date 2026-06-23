@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   other: {
     'article:published_time': '2026-04-29',
-    'article:modified_time': '2026-06-15',
+    'article:modified_time': '2026-06-23',
   },
 };
 
@@ -39,7 +39,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
   datePublished: '2026-04-29',
-  dateModified: '2026-06-15',
+  dateModified: '2026-06-23',
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/newtoki`,
@@ -106,19 +106,15 @@ export default function NewtokiPage() {
           <h1 id="intro">뉴토끼 주소 (2026년 6월) — 짭토끼 실시간 검증</h1>
 
           <p>
-            <strong>뉴토끼</strong>는 국내에서 가장 많은 사용자를 보유한 웹툰 사이트 중 하나입니다.
-            최근 도메인 차단과 서비스 변경으로 인해 기존 주소로 접속이 불가능해지면서,
-            많은 사용자들이 <strong>뉴토끼 최신 주소</strong>를 찾고 있습니다.
+            <strong>뉴토끼 최신 주소</strong>를 찾고 계신가요? 짭토끼는 도메인 차단으로 인해 자주 바뀌는 뉴토끼 주소를 5분마다 실시간 헬스체크하여 최신 도메인을 제공합니다.
           </p>
-
           <p>
-            <strong>짭토끼</strong>는 뉴토끼를 포함한 주요 웹툰 사이트의 접속 상태를
-            실시간으로 모니터링하고 있으며, 현재 접속 가능한 최신 주소를 자동으로 업데이트합니다.
+            공식 <strong>짭토끼 사이트</strong>에서 뉴토끼 새주소와 바로가기 링크를 이용하시면 사칭 피싱 사이트에 노출될 위험 없이 가장 안전하고 빠른 경로로 뉴토끼 접속이 가능합니다. 짭토끼는 항상 안전한 웹툰 사이트 연결을 보장합니다.
           </p>
 
           <NewtokiCTA />
 
-          <h2 id="latest-address">뉴토끼 최신 주소 확인 방법</h2>
+          <h2 id="latest-address">짭토끼로 뉴토끼 최신 주소 확인하는 방법</h2>
 
           <p>
             뉴토끼의 주소는 도메인 차단으로 인해 <strong>예고 없이 변경</strong>될 수 있습니다.

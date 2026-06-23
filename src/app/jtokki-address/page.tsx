@@ -30,7 +30,7 @@ const articleSchema = {
   image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  datePublished: '2026-05-13', dateModified: '2026-06-15',
+  datePublished: '2026-05-13', dateModified: '2026-06-23',
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki-address` },
 };
 
