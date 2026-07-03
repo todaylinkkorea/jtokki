@@ -183,7 +183,7 @@ export function CategorySection() {
                         href={site.url}
                         className="site-row__name"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="nofollow noopener noreferrer"
                       >
                         {site.name}
                       </a>

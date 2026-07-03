@@ -6,106 +6,129 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiCTA } from '@/components/NewtokiCTA';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
-const TODAY = '2026-06-23';
 const PUBLISHED = '2026-06-13';
 
-export const metadata: Metadata = {
-  title: '짭토끼 — 뉴토끼 최신 주소 실시간 검증 서비스 (2026년 6월)',
-  description:
-    '짭토끼는 뉴토끼·늑대닷컴·툰코 등 주요 웹툰 사이트의 최신 접속 주소를 실시간으로 검증하는 서비스입니다. 짭토끼에서 2026년 6월 기준 뉴토끼 접속 가능한 최신 주소를 지금 바로 확인하세요.',
-  alternates: { canonical: `${SITE_URL}/jtokki` },
-  keywords: [
-    '짭토끼',
-    '짭토끼 주소',
-    '짭토끼 사이트',
-    '짭토끼 뉴토끼',
-    '짭토끼 바로가기',
-    '짭토끼 접속',
-    '짭토끼 최신주소',
-    '짭토끼란',
-    '뉴토끼 짭토끼',
-    '웹툰 주소 검증',
-    '웹툰 최신 주소',
-    '뉴토끼 주소',
-  ],
-  openGraph: {
-    title: '짭토끼 — 뉴토끼 최신 주소 실시간 검증 서비스',
+/** 서버 렌더링 시점의 "YYYY년 M월" 문자열을 반환 */
+function getDateLabel(): string {
+  const now = new Date();
+  return `${now.getFullYear()}년 ${now.getMonth() + 1}월`;
+}
+
+/** 오늘 날짜를 "YYYY-MM-DD" 형식으로 반환 */
+function getTodayISO(): string {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+export function generateMetadata(): Metadata {
+  const dateLabel = getDateLabel();
+  const todayISO = getTodayISO();
+  const titleText = `짭토끼 — 뉴토끼 최신 주소 실시간 검증 서비스 (${dateLabel})`;
+
+  return {
+    title: titleText,
     description:
-      '짭토끼에서 뉴토끼를 비롯한 웹툰 사이트의 실시간 접속 주소를 확인하세요. 5분 간격 자동 검증, 도메인 변경 자동 감지.',
-    type: 'article',
-    locale: 'ko_KR',
-    url: `${SITE_URL}/jtokki`,
-    images: [
-      {
-        url: `${SITE_URL}/logo.png`,
-        width: 512,
-        height: 512,
-        alt: '짭토끼 — 웹툰 주소 실시간 검증',
-      },
+      `짭토끼는 뉴토끼·늑대닷컴·툰코 등 주요 웹툰 사이트의 최신 접속 주소를 실시간으로 검증하는 서비스입니다. 짭토끼에서 ${dateLabel} 기준 뉴토끼 접속 가능한 최신 주소를 지금 바로 확인하세요.`,
+    alternates: { canonical: `${SITE_URL}/jtokki` },
+    keywords: [
+      '짭토끼',
+      '짭토끼 주소',
+      '짭토끼 사이트',
+      '짭토끼 뉴토끼',
+      '짭토끼 바로가기',
+      '짭토끼 접속',
+      '짭토끼 최신주소',
+      '짭토끼란',
+      '뉴토끼 짭토끼',
+      '웹툰 주소 검증',
+      '웹툰 최신 주소',
+      '뉴토끼 주소',
     ],
-  },
-  other: {
-    'article:published_time': PUBLISHED,
-    'article:modified_time': TODAY,
-  },
-};
-
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: '짭토끼 — 뉴토끼 최신 주소 실시간 검증 서비스 (2026년 6월)',
-  description:
-    '짭토끼는 뉴토끼·늑대닷컴·툰코 등 주요 웹툰 사이트 접속 주소를 5분 간격으로 자동 검증하는 실시간 모니터링 서비스입니다.',
-  image: `${SITE_URL}/logo.png`,
-  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  publisher: {
-    '@type': 'Organization',
-    name: '짭토끼',
-    url: SITE_URL,
-    logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-  },
-  datePublished: PUBLISHED,
-  dateModified: TODAY,
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki` },
-  about: [
-    { '@type': 'Thing', name: '짭토끼' },
-    { '@type': 'Thing', name: '뉴토끼' },
-    { '@type': 'Thing', name: '웹툰 주소' },
-  ],
-};
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: '홈', item: SITE_URL },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: '짭토끼',
-      item: `${SITE_URL}/jtokki`,
+    openGraph: {
+      title: titleText,
+      description:
+        '짭토끼에서 뉴토끼를 비롯한 웹툰 사이트의 실시간 접속 주소를 확인하세요. 5분 간격 자동 검증, 도메인 변경 자동 감지.',
+      type: 'article',
+      locale: 'ko_KR',
+      url: `${SITE_URL}/jtokki`,
+      images: [
+        {
+          url: `${SITE_URL}/logo.png`,
+          width: 512,
+          height: 512,
+          alt: '짭토끼 — 웹툰 주소 실시간 검증',
+        },
+      ],
     },
-  ],
-};
-
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: '짭토끼',
-  url: SITE_URL,
-  description:
-    '뉴토끼 등 웹툰 사이트의 최신 접속 주소를 실시간으로 검증하는 서비스',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+    other: {
+      'article:published_time': PUBLISHED,
+      'article:modified_time': todayISO,
     },
-    'query-input': 'required name=search_term_string',
-  },
-};
+  };
+}
 
 export default function JtokkiPage() {
+  const dateLabel = getDateLabel();
+  const todayISO = getTodayISO();
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `짭토끼 — 뉴토끼 최신 주소 실시간 검증 서비스 (${dateLabel})`,
+    description:
+      '짭토끼는 뉴토끼·늑대닷컴·툰코 등 주요 웹툰 사이트 접속 주소를 5분 간격으로 자동 검증하는 실시간 모니터링 서비스입니다.',
+    image: `${SITE_URL}/logo.png`,
+    author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: '짭토끼',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+    },
+    datePublished: PUBLISHED,
+    dateModified: todayISO,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki` },
+    about: [
+      { '@type': 'Thing', name: '짭토끼' },
+      { '@type': 'Thing', name: '뉴토끼' },
+      { '@type': 'Thing', name: '웹툰 주소' },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '홈', item: SITE_URL },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: '짭토끼',
+        item: `${SITE_URL}/jtokki`,
+      },
+    ],
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '짭토끼',
+    url: SITE_URL,
+    description:
+      '뉴토끼 등 웹툰 사이트의 최신 접속 주소를 실시간으로 검증하는 서비스',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <>
       <script
@@ -185,11 +208,11 @@ export default function JtokkiPage() {
               marginBottom: 8,
             }}
           >
-            최종 업데이트: <time dateTime={TODAY}>2026년 6월 23일</time>
+            최종 업데이트: <time dateTime={todayISO}>{todayISO}</time>
           </p>
 
           <h1 id="intro">
-            짭토끼 — 뉴토끼 최신 주소 실시간 검증 (2026년 6월)
+            짭토끼 — 뉴토끼 최신 주소 실시간 검증 ({dateLabel})
           </h1>
 
           <p>

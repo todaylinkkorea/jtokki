@@ -5,48 +5,93 @@ import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
-export const metadata: Metadata = {
-  title: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 6월)',
-  description:
-    '짭토끼 최신 주소를 찾고 계신가요? 짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다. 짭토끼 주소, 짭토끼 바로가기, 짭토끼 사이트.',
-  alternates: { canonical: `${SITE_URL}/jtokki-address` },
-  keywords: [
-    '짭토끼 최신 주소', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트',
-    '짭토끼 최신주소', '짭토끼 공식', '짭토끼 링크',
-    '뉴토끼 짭토끼', '짭토끼 뉴토끼', '짭토끼',
-  ],
-  openGraph: {
-    title: '짭토끼 최신 주소 — 공식 접속 주소 안내',
-    description: '짭토끼 공식 주소와 뉴토끼 최신 주소를 안내합니다.',
-    type: 'article',
-    locale: 'ko_KR',
-  },
-};
+/** 서버 렌더링 시점의 "YYYY년 M월" 문자열을 반환 */
+function getDateLabel(): string {
+  const now = new Date();
+  return `${now.getFullYear()}년 ${now.getMonth() + 1}월`;
+}
 
-const articleSchema = {
-  '@context': 'https://schema.org', '@type': 'Article',
-  headline: '짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 6월)',
-  description: '짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다.',
-  image: `${SITE_URL}/logo.png`,
-  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
-  publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  datePublished: '2026-05-13', dateModified: '2026-06-23',
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki-address` },
-};
+/** 오늘 날짜를 "YYYY-MM-DD" 형식으로 반환 */
+function getTodayISO(): string {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: '홈', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: '짭토끼 최신 주소', item: `${SITE_URL}/jtokki-address` },
-  ],
-};
+export function generateMetadata(): Metadata {
+  const dateLabel = getDateLabel();
+  const titleText = `짭토끼 최신 주소 — 공식 접속 주소 안내 (${dateLabel})`;
+
+  return {
+    title: titleText,
+    description:
+      `짭토끼 최신 주소를 찾고 계신가요? 짭토끼 공식 접속 주소와 함께 뉴토끼 최신 도메인을 실시간 검증하여 안내합니다. 안전한 짭토끼 주소 및 짭토끼 바로가기 링크를 확인하고 피싱 위험 없이 사이트를 이용하세요.`,
+    alternates: { canonical: `${SITE_URL}/jtokki-address` },
+    keywords: [
+      '짭토끼 최신 주소', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트',
+      '짭토끼 최신주소', '짭토끼 공식', '짭토끼 링크',
+      '뉴토끼 짭토끼', '짭토끼 뉴토끼', '짭토끼',
+    ],
+    openGraph: {
+      title: titleText,
+      description: '짭토끼 공식 주소와 뉴토끼 최신 주소를 안내합니다.',
+      type: 'article',
+      locale: 'ko_KR',
+    },
+  };
+}
 
 export default function JtokkiAddressPage() {
+  const dateLabel = getDateLabel();
+  const todayISO = getTodayISO();
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `짭토끼 최신 주소 — 공식 접속 주소 안내 (${dateLabel})`,
+    description: '짭토끼 공식 접속 주소와 뉴토끼 최신 주소를 안내합니다.',
+    image: `${SITE_URL}/logo.png`,
+    author: {
+      '@type': 'Organization',
+      name: '짭토끼',
+      url: SITE_URL,
+      sameAs: [FACEBOOK_URL, GITHUB_URL],
+    },
+    publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+    datePublished: '2026-05-13',
+    dateModified: todayISO,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/jtokki-address`,
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '홈', item: SITE_URL },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: '짭토끼 최신 주소',
+        item: `${SITE_URL}/jtokki-address`,
+      },
+    ],
+  };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <header className="hero" style={{ padding: '32px 20px 24px' }}>
         <div className="container">
@@ -55,7 +100,12 @@ export default function JtokkiAddressPage() {
               <BunnyLogo size={42} />
               <span className="hero__logo-text">짭토끼</span>
             </Link>
-            <Link href="/" style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>← 홈으로</Link>
+            <Link
+              href="/"
+              style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}
+            >
+              ← 홈으로
+            </Link>
           </div>
         </div>
       </header>
@@ -64,12 +114,24 @@ export default function JtokkiAddressPage() {
         <aside className="article-toc">
           <p className="article-toc__title">목차</p>
           <ul className="article-toc__list">
-            <li><a href="#intro">짭토끼 최신 주소</a></li>
-            <li><a href="#official">공식 주소 안내</a></li>
-            <li><a href="#what">짭토끼란?</a></li>
-            <li><a href="#how">사용 방법</a></li>
-            <li><a href="#fake">사칭 사이트 주의</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li>
+              <a href="#intro">짭토끼 최신 주소</a>
+            </li>
+            <li>
+              <a href="#official">공식 주소 안내</a>
+            </li>
+            <li>
+              <a href="#what">짭토끼란?</a>
+            </li>
+            <li>
+              <a href="#how">사용 방법</a>
+            </li>
+            <li>
+              <a href="#fake">사칭 사이트 주의</a>
+            </li>
+            <li>
+              <a href="#faq">FAQ</a>
+            </li>
           </ul>
         </aside>
 
@@ -78,7 +140,9 @@ export default function JtokkiAddressPage() {
             <Link href="/">홈</Link> &gt; 짭토끼 최신 주소
           </nav>
 
-          <h1 id="intro">짭토끼 최신 주소 — 공식 접속 주소 안내 (2026년 6월)</h1>
+          <h1 id="intro">
+            짭토끼 최신 주소 — 공식 접속 주소 안내 ({dateLabel})
+          </h1>
 
           <p>
             <strong>짭토끼 최신 주소</strong>를 검색하셨나요? 짭토끼는 뉴토끼를 포함한 주요 사이트의
