@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
 import { SITE_URL, FACEBOOK_URL, GITHUB_URL } from '@/lib/constants';
+import { getDateLabel, getTodayISO } from '@/lib/date';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
+/** 빌드 시점에 평가되므로 워커 재빌드마다 갱신된다 */
+const DATE_LABEL = getDateLabel();
+const TODAY_ISO = getTodayISO();
+
 export const metadata: Metadata = {
-  title: '무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
+  title: `무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (${DATE_LABEL})`,
   description:
     '무료 웹툰 사이트 최신 주소를 찾고 계신가요? 짭토끼가 실시간으로 검증한 접속 가능한 무료 웹툰 사이트 TOP 3를 안내합니다. 뉴토끼, 늑대닷컴, 툰코 최신 주소.',
   alternates: { canonical: `${SITE_URL}/free-webtoon` },
@@ -21,13 +26,15 @@ export const metadata: Metadata = {
       '짭토끼가 실시간 검증한 무료 웹툰 사이트 TOP 3 최신 주소를 안내합니다.',
     type: 'article',
     locale: 'ko_KR',
+    url: `${SITE_URL}/free-webtoon`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
   },
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)',
+  headline: `무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (${DATE_LABEL})`,
   description:
     '짭토끼가 실시간 검증한 무료 웹툰 사이트 TOP 3의 최신 접속 주소를 안내합니다.',
   image: `${SITE_URL}/logo.png`,
@@ -43,7 +50,7 @@ const articleSchema = {
     url: SITE_URL,
   },
   datePublished: '2026-05-11',
-  dateModified: '2026-05-11',
+  dateModified: TODAY_ISO,
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/free-webtoon`,
@@ -108,12 +115,12 @@ export default function FreeWebtoonPage() {
           </nav>
 
           <h1 id="intro">
-            무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 5월)
+            무료 웹툰 사이트 TOP 3 — 지금 접속 가능한 최신 주소 ({DATE_LABEL})
           </h1>
 
           <p>
             <strong>무료 웹툰 사이트</strong>를 찾고 계신가요? 이 페이지에서는
-            2026년 5월 현재 <strong>접속 가능한 무료 웹툰 사이트</strong>의
+            {DATE_LABEL} 현재 <strong>접속 가능한 무료 웹툰 사이트</strong>의
             최신 주소를 안내합니다. 무료 웹툰 사이트는 도메인 차단으로 인해
             주소가 수시로 바뀌기 때문에, 검색에서 찾은 주소가 이미 막힌 경우가
             많습니다.
@@ -127,7 +134,7 @@ export default function FreeWebtoonPage() {
           </p>
 
           <div className="callout">
-            <p className="callout__title">📖 무료 웹툰 사이트 TOP 3 (2026년 5월)</p>
+            <p className="callout__title">📖 무료 웹툰 사이트 TOP 3 ({DATE_LABEL})</p>
             <p className="callout__body">
               <strong>1. 뉴토끼</strong> — 국내 최대, 최신 연재작 가장 빠른 업데이트<br />
               <strong>2. 늑대닷컴</strong> — 다양한 장르, 안정적 서버 운영<br />
@@ -277,7 +284,7 @@ export default function FreeWebtoonPage() {
           <h2 id="faq">자주 묻는 질문</h2>
           <div className="faq-list">
             <FAQItem question="무료 웹툰 사이트는 어디인가요?" defaultOpen>
-              2026년 5월 기준, 짭토끼가 검증한 무료 웹툰 사이트 TOP 3는
+              {DATE_LABEL} 기준, 짭토끼가 검증한 무료 웹툰 사이트 TOP 3는
               뉴토끼(국내 최대), 늑대닷컴(다양한 장르), 툰코(모바일
               최적화)입니다. 짭토끼에서 각 사이트의 접속 가능한 최신 주소를
               실시간으로 확인할 수 있습니다.

@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import { SITE_URL, FACEBOOK_URL, GITHUB_URL } from '@/lib/constants';
+import { getDateLabel, getTodayISO } from '@/lib/date';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
+/** 빌드 시점에 평가되므로 워커 재빌드마다 갱신된다 */
+const DATE_LABEL = getDateLabel();
+const TODAY_ISO = getTodayISO();
+
 export const metadata: Metadata = {
-  title: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 6월)',
+  title: `뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (${DATE_LABEL})`,
   description:
-    '뉴토끼 최신 주소를 찾고 계신가요? 2026년 6월 현재 접속 가능한 뉴토끼 최신 도메인을 짭토끼가 실시간으로 검증합니다. 뉴토끼 최신 주소, 뉴토끼 새주소, 뉴토끼 바로가기.',
+    `뉴토끼 최신 주소를 찾고 계신가요? ${DATE_LABEL} 현재 접속 가능한 뉴토끼 최신 도메인을 짭토끼가 실시간으로 검증합니다. 뉴토끼 최신 주소, 뉴토끼 새주소, 뉴토끼 바로가기.`,
   alternates: { canonical: `${SITE_URL}/newtoki-address` },
   keywords: [
     '뉴토끼 최신 주소', '뉴토끼 최신주소', '뉴토끼 새주소', '뉴토끼 주소',
@@ -19,17 +24,19 @@ export const metadata: Metadata = {
     description: '뉴토끼 최신 주소가 변경되었나요? 짭토끼에서 실시간 검증된 최신 주소를 안내합니다.',
     type: 'article',
     locale: 'ko_KR',
+    url: `${SITE_URL}/newtoki-address`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
   },
 };
 
 const articleSchema = {
   '@context': 'https://schema.org', '@type': 'Article',
-  headline: '뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 6월)',
+  headline: `뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (${DATE_LABEL})`,
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
   image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
   publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  datePublished: '2026-05-13', dateModified: '2026-06-23',
+  datePublished: '2026-05-13', dateModified: TODAY_ISO,
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/newtoki-address` },
 };
 
@@ -77,7 +84,7 @@ export default function NewtokiAddressPage() {
             <Link href="/">홈</Link> &gt; 뉴토끼 최신 주소
           </nav>
 
-          <h1 id="intro">뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 (2026년 6월)</h1>
+          <h1 id="intro">뉴토끼 최신 주소 — 지금 접속 가능한 주소 확인 ({DATE_LABEL})</h1>
 
           <p>
             <strong>뉴토끼 최신 주소</strong>를 찾고 계신가요? 뉴토끼는 도메인 차단으로 인해 주소가 수시로 변경됩니다.

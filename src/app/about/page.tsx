@@ -6,31 +6,39 @@ import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
+// 브랜드 키워드는 /jtokki, 주소 키워드는 /jtokki-address 가 담당한다.
+// /about 은 "누가 운영하며 어떻게 검증하는가"(E-E-A-T) 의도만 노린다.
 export const metadata: Metadata = {
-  title: '짭토끼 — 뉴토끼 최신 주소를 찾는 가장 안전한 방법 (2026)',
+  title: { absolute: '짭토끼 소개 — 운영 주체와 사이트 검증 원칙' },
   description:
-    '짭토끼 주소 바로가기 — 뉴토끼 최신 접속 주소를 지금 바로 확인하세요. 짭토끼가 5분 간격으로 실시간 검증한 안전한 최신 주소를 제공합니다. 짭토끼 공식 주소 안내.',
+    '짭토끼는 누가 어떻게 운영하는 서비스일까요? 5분 간격 자동 헬스체크의 동작 방식, Top 3 선정 기준, 수집하지 않는 정보까지 짭토끼의 운영 원칙을 투명하게 공개합니다.',
   alternates: { canonical: `${SITE_URL}/about` },
   keywords: [
-    '짭토끼', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트',
-    '짭토끼 뉴토끼', '짭토끼 링크', '뉴토끼 짭토끼',
-    '뉴토끼 최신주소', '뉴토끼 새주소', '뉴토끼 대체',
+    '짭토끼 소개', '짭토끼 운영', '짭토끼 신뢰', '짭토끼 검증 기준',
+    '짭토끼 안전', '짭토끼 어떤 사이트', '짭토끼',
   ],
   openGraph: {
-    title: '짭토끼 — 뉴토끼 최신 주소를 찾는 가장 안전한 방법',
+    title: '짭토끼 소개 — 운영 주체와 사이트 검증 원칙',
     description:
-      '뉴토끼가 닫혔다면? 짭토끼에서 검증된 최신 주소를 확인하세요.',
+      '짭토끼의 실시간 검증 방식과 운영 원칙을 투명하게 공개합니다.',
     type: 'article',
     locale: 'ko_KR',
+    url: `${SITE_URL}/about`,
+    images: [
+      {
+        url: `${SITE_URL}/images/about/jtokki-main-page.webp`,
+        alt: '짭토끼 메인 페이지 화면',
+      },
+    ],
   },
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '짭토끼 — 뉴토끼 최신 주소를 찾는 가장 안전한 방법 (2026)',
+  headline: '짭토끼 소개 — 운영 주체와 사이트 검증 원칙',
   description:
-    '뉴토끼 서비스 종료 후 짭토끼에서 실시간 검증된 최신 접속 주소를 확인하는 방법을 안내합니다.',
+    '짭토끼의 실시간 헬스체크 동작 방식, Top 3 선정 기준, 개인정보 처리 원칙을 안내합니다.',
   image: `${SITE_URL}/images/about/jtokki-main-page.webp`,
   author: {
     '@type': 'Organization',

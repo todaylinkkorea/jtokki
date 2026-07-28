@@ -29,7 +29,9 @@ export function generateMetadata(): Metadata {
   const titleText = `짭토끼 — 뉴토끼 최신 주소 실시간 검증 서비스 (${dateLabel})`;
 
   return {
-    title: titleText,
+    // 제목이 이미 "짭토끼"로 시작하므로 레이아웃의 "| 짭토끼" 접미사를 붙이지 않는다
+    // (한국어 SERP는 약 30자에서 잘리므로 중복 브랜드는 노출 예산 낭비)
+    title: { absolute: titleText },
     description:
       `짭토끼는 뉴토끼·늑대닷컴·툰코 등 주요 웹툰 사이트의 최신 접속 주소를 실시간으로 검증하는 서비스입니다. 짭토끼에서 ${dateLabel} 기준 뉴토끼 접속 가능한 최신 주소를 지금 바로 확인하세요.`,
     alternates: { canonical: `${SITE_URL}/jtokki` },
@@ -112,23 +114,6 @@ export default function JtokkiPage() {
     ],
   };
 
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: '짭토끼',
-    url: SITE_URL,
-    description:
-      '뉴토끼 등 웹툰 사이트의 최신 접속 주소를 실시간으로 검증하는 서비스',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
-  };
-
   return (
     <>
       <script
@@ -138,10 +123,6 @@ export default function JtokkiPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
 
       {/* Header */}
@@ -419,6 +400,11 @@ export default function JtokkiPage() {
             </li>
             <li>
               <Link href="/jtokki-address">짭토끼 공식 주소 안내</Link>
+            </li>
+            <li>
+              <Link href="/jtokki-bypass">
+                짭토끼 접속 안 될 때 — 우회 접속 방법
+              </Link>
             </li>
           </ul>
 

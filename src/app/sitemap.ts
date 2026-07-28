@@ -74,6 +74,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/jtokki-bypass`,
+      lastModified: TODAY,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/terms`,
       lastModified: '2026-04-28',
       changeFrequency: 'yearly',

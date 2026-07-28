@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: '이용약관',
   description: '짭토끼 서비스 이용약관입니다.',
   alternates: { canonical: `${SITE_URL}/terms` },
+  // 상속된 홈 OG 태그가 노출되지 않도록 페이지 단위로 덮어쓴다
+  openGraph: {
+    title: '이용약관 | 짭토끼',
+    description: '짭토끼 서비스 이용약관입니다.',
+    type: 'article',
+    locale: 'ko_KR',
+    url: `${SITE_URL}/terms`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
+  },
   robots: { index: true, follow: true },
 };
 

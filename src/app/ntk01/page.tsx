@@ -22,6 +22,8 @@ export const metadata: Metadata = {
       'ntk01 뉴토끼 접속이 안 되나요? 짭토끼에서 실시간 검증된 최신 주소를 확인하세요.',
     type: 'article',
     locale: 'ko_KR',
+    url: `${SITE_URL}/ntk01`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
   },
 };
 

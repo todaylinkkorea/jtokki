@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
 import { SITE_URL, FACEBOOK_URL, GITHUB_URL } from '@/lib/constants';
+import { getDateLabel, getTodayISO } from '@/lib/date';
 import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
+/** 빌드 시점에 평가되므로 워커 재빌드마다 갱신된다 */
+const DATE_LABEL = getDateLabel();
+const TODAY_ISO = getTodayISO();
+
 export const metadata: Metadata = {
-  title: '웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 6월)',
+  title: `웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (${DATE_LABEL})`,
   description:
     '지금 바로 접속 가능한 웹툰 사이트 TOP 3 최신 주소 안내. 뉴토끼, 늑대닷컴, 툰코의 실시간 접속 상태와 최신 도메인을 짭토끼가 5분 간격으로 검증합니다. 웹툰 사이트 추천.',
   alternates: { canonical: `${SITE_URL}/webtoon-site` },
@@ -21,13 +26,15 @@ export const metadata: Metadata = {
       '뉴토끼, 늑대닷컴, 툰코 — 접속 가능한 웹툰 사이트 최신 주소를 짭토끼가 실시간 검증합니다.',
     type: 'article',
     locale: 'ko_KR',
+    url: `${SITE_URL}/webtoon-site`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
   },
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 6월)',
+  headline: `웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (${DATE_LABEL})`,
   description:
     '뉴토끼, 늑대닷컴, 툰코 등 접속 가능한 웹툰 사이트의 최신 주소를 실시간으로 안내합니다.',
   image: `${SITE_URL}/logo.png`,
@@ -43,7 +50,7 @@ const articleSchema = {
     url: SITE_URL,
   },
   datePublished: '2026-05-11',
-  dateModified: '2026-06-23',
+  dateModified: TODAY_ISO,
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': `${SITE_URL}/webtoon-site`,
@@ -110,7 +117,7 @@ export default function WebtoonSitePage() {
           </nav>
 
           <h1 id="intro">
-            웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 (2026년 6월)
+            웹툰 사이트 추천 TOP 3 — 지금 접속 가능한 최신 주소 ({DATE_LABEL})
           </h1>
 
           <p>
@@ -123,12 +130,12 @@ export default function WebtoonSitePage() {
           <p>
             <strong>짭토끼</strong>는 주요 웹툰 사이트를 <strong>5분
             간격으로 자동 검증</strong>하여, 현재 접속 가능한 최신 주소만을
-            제공합니다. 아래에서 2026년 6월 기준 웹툰 사이트 TOP 3를
+            제공합니다. 아래에서 {DATE_LABEL} 기준 웹툰 사이트 TOP 3를
             확인하세요.
           </p>
 
           <div className="callout">
-            <p className="callout__title">📖 웹툰 사이트 TOP 3 — 2026년 6월 기준</p>
+            <p className="callout__title">📖 웹툰 사이트 TOP 3 — {DATE_LABEL} 기준</p>
             <p className="callout__body">
               <strong>1위. 뉴토끼</strong> — 국내 최대, 최신 연재작 가장 빠른 업데이트<br />
               <strong>2위. 늑대닷컴</strong> — 다양한 장르, 안정적인 서버<br />
@@ -139,7 +146,7 @@ export default function WebtoonSitePage() {
           </div>
 
           {/* ===== 순위 비교 ===== */}
-          <h2 id="ranking">웹툰 사이트 순위 비교 (2026년 6월)</h2>
+          <h2 id="ranking">웹툰 사이트 순위 비교 ({DATE_LABEL})</h2>
 
           <p>
             짭토끼는 서버 응답 속도, 최근 30일 업타임, 사용자 추천수를
@@ -281,7 +288,7 @@ export default function WebtoonSitePage() {
           <h2 id="faq">자주 묻는 질문</h2>
           <div className="faq-list">
             <FAQItem question="지금 접속 가능한 웹툰 사이트는 어디인가요?" defaultOpen>
-              2026년 6월 현재, 짭토끼가 실시간 검증한 접속 가능한 웹툰
+              {DATE_LABEL} 현재, 짭토끼가 실시간 검증한 접속 가능한 웹툰
               사이트 TOP 3는 뉴토끼, 늑대닷컴, 툰코입니다. 짭토끼 메인
               페이지에서 각 사이트의 최신 주소와 접속 상태를 실시간으로
               확인할 수 있습니다.

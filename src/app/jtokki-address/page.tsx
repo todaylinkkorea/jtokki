@@ -25,7 +25,8 @@ export function generateMetadata(): Metadata {
   const titleText = `짭토끼 최신 주소 — 공식 접속 주소 안내 (${dateLabel})`;
 
   return {
-    title: titleText,
+    // 제목이 이미 "짭토끼"로 시작 — 레이아웃 브랜드 접미사 생략
+    title: { absolute: titleText },
     description:
       `짭토끼 최신 주소를 찾고 계신가요? 짭토끼 공식 접속 주소와 함께 뉴토끼 최신 도메인을 실시간 검증하여 안내합니다. 안전한 짭토끼 주소 및 짭토끼 바로가기 링크를 확인하고 피싱 위험 없이 사이트를 이용하세요.`,
     alternates: { canonical: `${SITE_URL}/jtokki-address` },
@@ -39,6 +40,10 @@ export function generateMetadata(): Metadata {
       description: '짭토끼 공식 주소와 뉴토끼 최신 주소를 안내합니다.',
       type: 'article',
       locale: 'ko_KR',
+      url: `${SITE_URL}/jtokki-address`,
+      images: [
+        { url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' },
+      ],
     },
   };
 }
@@ -131,6 +136,9 @@ export default function JtokkiAddressPage() {
             </li>
             <li>
               <a href="#faq">FAQ</a>
+            </li>
+            <li>
+              <a href="#related">관련 콘텐츠</a>
             </li>
           </ul>
         </aside>
@@ -236,6 +244,19 @@ export default function JtokkiAddressPage() {
               반드시 짭토끼.com 도메인인지 확인하고, 주소창의 자물쇠 아이콘을 체크하세요.
             </FAQItem>
           </div>
+
+          <h2 id="related">관련 콘텐츠</h2>
+          <ul>
+            <li>
+              <Link href="/jtokki-bypass">짭토끼 접속 안 될 때 — 우회 접속 방법 총정리</Link>
+            </li>
+            <li>
+              <Link href="/jtokki">짭토끼란? — 실시간 검증 서비스 소개</Link>
+            </li>
+            <li>
+              <Link href="/newtoki">뉴토끼 주소 — 짭토끼 실시간 검증</Link>
+            </li>
+          </ul>
 
           <div className="article-cta">
             <p className="article-cta__text">짭토끼에서 뉴토끼 최신 주소를 지금 바로 확인하세요</p>

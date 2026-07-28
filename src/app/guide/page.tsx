@@ -6,10 +6,19 @@ import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
 
 export const metadata: Metadata = {
-  title: '짭토끼 가이드 - 실시간 검증 사이트 모음 이용 방법',
+  title: { absolute: '짭토끼 이용 가이드 — 사이트 상태 확인하는 법' },
   description:
-    '짭토끼의 실시간 검증 시스템, Top 3 선정 기준, 도메인 변경 알림 서비스에 대해 자세히 알아보세요. 짭토끼 주소 바로가기 및 이용 가이드.',
+    '짭토끼 처음 쓰시나요? LIVE·CHANGED·DOWN 뱃지 읽는 법, 즐겨찾기 등록, 도메인 변경 알림 설정까지 짭토끼 이용 방법을 단계별로 안내합니다.',
   alternates: { canonical: `${SITE_URL}/guide` },
+  keywords: ['짭토끼 이용방법', '짭토끼 가이드', '짭토끼 사용법', '짭토끼 즐겨찾기', '짭토끼'],
+  openGraph: {
+    title: '짭토끼 이용 가이드 — 사이트 상태 확인하는 법',
+    description: '짭토끼의 실시간 모니터링 시스템과 검증 기준, 이용 방법을 안내합니다.',
+    type: 'article',
+    locale: 'ko_KR',
+    url: `${SITE_URL}/guide`,
+    images: [{ url: `${SITE_URL}/logo.png`, width: 512, height: 512, alt: '짭토끼 로고' }],
+  },
 };
 
 const articleSchema = {

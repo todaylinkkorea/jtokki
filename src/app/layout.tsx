@@ -62,12 +62,19 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
   name: '짭토끼',
+  // 검색 표기 흔들림(짭토키/jtokki/짭토끼.com)을 같은 엔티티로 묶는다
+  alternateName: ['짭토끼.com', 'jtokki', '짭토키'],
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/logo.png`,
   description: '실시간 헬스체크로 검증된 안전한 사이트 주소를 제공하는 링크 디렉토리 서비스',
   sameAs: [FACEBOOK_URL, GITHUB_URL],
   foundingDate: '2024-01-01',
+  knowsAbout: ['웹툰 사이트 주소', '실시간 사이트 헬스체크', '도메인 변경 추적', '뉴토끼 최신 주소'],
+  areaServed: { '@type': 'Country', name: '대한민국' },
+  inLanguage: 'ko',
 };
 
 export default function RootLayout({
@@ -138,6 +145,7 @@ export default function RootLayout({
             <a href="/free-webtoon">무료 웹툰</a>
             <a href="/jtokki">짭토끼</a>
             <a href="/jtokki-address">짭토끼 주소</a>
+            <a href="/jtokki-bypass">짭토끼 접속 안 될 때</a>
           </nav>
 
           <nav className="footer__links">

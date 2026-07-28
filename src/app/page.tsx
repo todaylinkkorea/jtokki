@@ -27,7 +27,10 @@ const breadcrumbSchema = {
 const siteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
   name: '짭토끼',
+  alternateName: ['짭토끼.com', 'jtokki'],
+  inLanguage: 'ko',
   url: SITE_URL,
   description: '실시간 헬스체크로 검증된 사이트 모음 서비스',
   publisher: {
@@ -44,22 +47,21 @@ const siteSchema = {
   },
 };
 
-const articleSchema = {
+/**
+ * 홈은 기사가 아니라 카테고리별 사이트 목록이므로 CollectionPage 로 선언한다.
+ * (Article 로 두면 Google 이 무시할 뿐 아니라 하위 문서 페이지의 Article 신호를 흐린다)
+ */
+const collectionSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: '짭토끼 - 실시간 검증된 사이트 모음 | 짭토끼 주소 바로가기',
+  '@type': 'CollectionPage',
+  '@id': `${SITE_URL}/#webpage`,
+  name: '짭토끼 - 실시간 검증된 사이트 모음',
   description: '짭토끼가 실시간 헬스체크로 검증한 살아있는 사이트만 모았습니다. 뉴토끼, 늑대닷컴, 툰코 등 카테고리별 최신 주소를 제공합니다.',
-  image: `${SITE_URL}/logo.png`,
-  author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-  publisher: {
-    '@type': 'Organization',
-    name: '짭토끼',
-    url: SITE_URL,
-    logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-  },
-  datePublished: '2024-01-01',
+  url: SITE_URL,
+  inLanguage: 'ko',
+  isPartOf: { '@id': `${SITE_URL}/#website` },
+  about: { '@id': `${SITE_URL}/#organization` },
   dateModified: new Date().toISOString().split('T')[0],
-  mainEntityOfPage: { '@type': 'WebPage', '@id': SITE_URL },
 };
 
 export default function HomePage() {
@@ -75,7 +77,7 @@ export default function HomePage() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
       {/* ===== HERO ===== */}
