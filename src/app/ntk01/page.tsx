@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'ntk01 뉴토끼 최신 주소 — 안전한 접속 방법 안내 (2026)',
@@ -40,11 +41,7 @@ const articleSchema = {
     url: SITE_URL,
     sameAs: [FACEBOOK_URL, GITHUB_URL],
   },
-  publisher: {
-    '@type': 'Organization',
-    name: '짭토끼',
-    url: SITE_URL,
-  },
+  publisher: ORG_PUBLISHER,
   datePublished: '2026-05-04',
   dateModified: '2026-05-23',
   mainEntityOfPage: {
@@ -125,6 +122,13 @@ export default function Ntk01Page() {
             하지만 <strong>ntk01</strong>이 현재도 접속 가능한 주소인지는
             직접 확인하기 어렵습니다. 이미 차단되었을 수도 있고, 검색 결과에
             나오는 ntk01 주소가 <strong>피싱 사이트</strong>일 수도 있습니다.
+          </p>
+
+          <p>
+            실제로 짭토끼의 모니터링 기록에 따르면 <strong>ntk01.com은
+            2026년 5월 이후 더 이상 뉴토끼의 현재 주소가 아니며</strong>,
+            이후 여러 차례 새 도메인으로 교체되었습니다. 아래 방법으로
+            지금 접속 가능한 최신 주소를 확인하세요.
           </p>
 
           <div className="callout">

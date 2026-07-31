@@ -26,20 +26,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      // 본문이 날짜-동적이지 않은 페이지는 실제 콘텐츠 수정일(JSON-LD dateModified)과 일치시킨다
       url: `${SITE_URL}/about`,
-      lastModified: TODAY,
+      lastModified: '2026-05-11',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/ntk01`,
-      lastModified: TODAY,
+      lastModified: '2026-05-23',
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/guide`,
-      lastModified: TODAY,
+      lastModified: '2026-05-11',
       changeFrequency: 'weekly',
       priority: 0.7,
     },

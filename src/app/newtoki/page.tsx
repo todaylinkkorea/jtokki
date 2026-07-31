@@ -4,21 +4,8 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiCTA } from '@/components/NewtokiCTA';
-
-/** 서버 렌더링 시점의 "YYYY년 M월" 문자열을 반환 */
-function getDateLabel(): string {
-  const now = new Date();
-  return `${now.getFullYear()}년 ${now.getMonth() + 1}월`;
-}
-
-/** 오늘 날짜를 "YYYY-MM-DD" 형식으로 반환 */
-function getTodayISO(): string {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-}
+import { getDateLabel, getTodayISO } from '@/lib/date';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 export function generateMetadata(): Metadata {
   const dateLabel = getDateLabel();
@@ -58,7 +45,7 @@ function buildArticleSchema(dateLabel: string) {
     description: '뉴토끼 실시간 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
     image: `${SITE_URL}/logo.png`,
     author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-    publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+    publisher: ORG_PUBLISHER,
     datePublished: '2026-04-29',
     dateModified: getTodayISO(),
     mainEntityOfPage: {

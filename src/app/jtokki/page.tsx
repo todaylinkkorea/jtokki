@@ -5,23 +5,10 @@ import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiCTA } from '@/components/NewtokiCTA';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { getDateLabel, getTodayISO } from '@/lib/date';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 const PUBLISHED = '2026-06-13';
-
-/** 서버 렌더링 시점의 "YYYY년 M월" 문자열을 반환 */
-function getDateLabel(): string {
-  const now = new Date();
-  return `${now.getFullYear()}년 ${now.getMonth() + 1}월`;
-}
-
-/** 오늘 날짜를 "YYYY-MM-DD" 형식으로 반환 */
-function getTodayISO(): string {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-}
 
 export function generateMetadata(): Metadata {
   const dateLabel = getDateLabel();
@@ -84,12 +71,7 @@ export default function JtokkiPage() {
       '짭토끼는 뉴토끼·늑대닷컴·툰코 등 주요 웹툰 사이트 접속 주소를 5분 간격으로 자동 검증하는 실시간 모니터링 서비스입니다.',
     image: `${SITE_URL}/logo.png`,
     author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
-    publisher: {
-      '@type': 'Organization',
-      name: '짭토끼',
-      url: SITE_URL,
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-    },
+    publisher: ORG_PUBLISHER,
     datePublished: PUBLISHED,
     dateModified: todayISO,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/jtokki` },
@@ -205,7 +187,7 @@ export default function JtokkiPage() {
           </p>
 
           {/* ✅ H1 직후 첫 번째 CTA — 뉴토끼 버튼 + cu2day 광고 풀 노출 */}
-          <NewtokiCTA page="/jtokki" />
+          <NewtokiCTA />
 
           <h2 id="newtoki">짭토끼에서 뉴토끼 최신 주소 확인하기</h2>
 

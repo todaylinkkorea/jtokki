@@ -5,3 +5,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.taskagenticai.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' https://plausible.taskagenticai.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'self'
+
+# 파일명에 콘텐츠 해시가 포함되므로 배포 시 자동 무효화 — 1년 immutable 캐시
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

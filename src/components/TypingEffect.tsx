@@ -38,5 +38,19 @@ export function TypingEffect({ text, highlightWord }: TypingEffectProps) {
     return () => clearTimeout(timer);
   }, [text, highlightWord]);
 
-  return <span ref={ref} />;
+  // SSR/크롤러에는 전체 텍스트를 노출하고, 하이드레이션 후 타이핑 애니메이션으로 대체한다
+  const idx = highlightWord ? text.indexOf(highlightWord) : -1;
+  return (
+    <span ref={ref}>
+      {idx >= 0 && highlightWord ? (
+        <>
+          {text.slice(0, idx)}
+          <span className="hero__highlight">{highlightWord}</span>
+          {text.slice(idx + highlightWord.length)}
+        </>
+      ) : (
+        text
+      )}
+    </span>
+  );
 }

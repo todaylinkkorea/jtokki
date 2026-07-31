@@ -4,21 +4,8 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
-
-/** 서버 렌더링 시점의 "YYYY년 M월" 문자열을 반환 */
-function getDateLabel(): string {
-  const now = new Date();
-  return `${now.getFullYear()}년 ${now.getMonth() + 1}월`;
-}
-
-/** 오늘 날짜를 "YYYY-MM-DD" 형식으로 반환 */
-function getTodayISO(): string {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-}
+import { getDateLabel, getTodayISO } from '@/lib/date';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 export function generateMetadata(): Metadata {
   const dateLabel = getDateLabel();
@@ -28,7 +15,7 @@ export function generateMetadata(): Metadata {
     // 제목이 이미 "짭토끼"로 시작 — 레이아웃 브랜드 접미사 생략
     title: { absolute: titleText },
     description:
-      `짭토끼 최신 주소를 찾고 계신가요? 짭토끼 공식 접속 주소와 함께 뉴토끼 최신 도메인을 실시간 검증하여 안내합니다. 안전한 짭토끼 주소 및 짭토끼 바로가기 링크를 확인하고 피싱 위험 없이 사이트를 이용하세요.`,
+      `짭토끼 최신 주소를 찾고 계신가요? 공식 접속 주소와 뉴토끼 최신 도메인을 실시간 검증하여 안내합니다. 검증된 바로가기 링크로 피싱 위험 없이 안전하게 이용하세요.`,
     alternates: { canonical: `${SITE_URL}/jtokki-address` },
     keywords: [
       '짭토끼 최신 주소', '짭토끼 주소', '짭토끼 바로가기', '짭토끼 사이트',
@@ -64,7 +51,7 @@ export default function JtokkiAddressPage() {
       url: SITE_URL,
       sameAs: [FACEBOOK_URL, GITHUB_URL],
     },
-    publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+    publisher: ORG_PUBLISHER,
     datePublished: '2026-05-13',
     dateModified: todayISO,
     mainEntityOfPage: {

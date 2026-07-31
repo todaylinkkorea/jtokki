@@ -216,6 +216,50 @@ a:hover {
   border-radius: 1px;
 }
 
+/* ====== SITE SEARCH ====== */
+.site-search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.site-search__input {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 18px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 100px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.site-search__input::placeholder {
+  color: var(--text-secondary);
+}
+
+.site-search__input:focus {
+  border-color: var(--success);
+  background: var(--success-dim);
+}
+
+.site-search__empty {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 32px 0;
+}
+
+/* 표 하단 보충 설명 */
+.table-note {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
 /* ====== CATEGORY NAV SHORTCUTS ====== */
 .category-nav {
   display: flex;
@@ -479,7 +523,13 @@ a:hover {
   cursor: pointer;
   color: var(--text-muted);
   transition: transform var(--transition-fast), color var(--transition-fast);
-  padding: 2px;
+  /* WCAG 2.5.8 터치 타깃 확보 — 아이콘은 그대로, 히트박스만 확장 */
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   line-height: 1;
   flex-shrink: 0;
 }

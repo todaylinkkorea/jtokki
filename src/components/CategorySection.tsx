@@ -79,6 +79,15 @@ function mapApiToCategories(apiData: CrawlerCategory[]): Category[] {
 export function CategorySection() {
   const [categories, setCategories] = useState<Category[]>(CATEGORIES);
   const [isLive, setIsLive] = useState(false);
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    // WebSite SearchAction 타깃(/?q={search_term_string})과 연동 — URL 쿼리로 초기 검색어 주입
+    // (SSG라 서버 렌더 시점엔 쿼리를 알 수 없어 마운트 후 1회만 동기화)
+    const q = new URLSearchParams(window.location.search).get('q');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (q) setQuery(q);
+  }, []);
 
   useEffect(() => {
     // Skip API call when no crawler URL is configured (static-only mode)
@@ -103,11 +112,35 @@ export function CategorySection() {
       });
   }, []);
 
+  const keyword = query.trim().toLowerCase();
+  const visibleCategories = keyword
+    ? categories
+        .map((cat) => ({
+          ...cat,
+          sites: cat.title.toLowerCase().includes(keyword)
+            ? cat.sites
+            : cat.sites.filter((site) => site.name.toLowerCase().includes(keyword)),
+        }))
+        .filter((cat) => cat.sites.length > 0)
+    : categories;
+
   return (
     <>
+      {/* Site search — SearchAction 스키마와 연결된 실제 검색 기능 */}
+      <div className="site-search">
+        <input
+          type="search"
+          className="site-search__input"
+          placeholder="사이트 이름 검색 (예: 뉴토끼)"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          aria-label="사이트 검색"
+        />
+      </div>
+
       {/* Category shortcut buttons */}
       <nav className="category-nav" aria-label="카테고리 바로가기">
-        {categories.map((cat) => (
+        {visibleCategories.map((cat) => (
           <a
             key={cat.id}
             href={`#${cat.id}`}
@@ -132,8 +165,13 @@ export function CategorySection() {
       )}
 
       {/* Cards */}
+      {keyword && visibleCategories.length === 0 && (
+        <p className="site-search__empty">
+          &lsquo;{query.trim()}&rsquo;에 대한 검색 결과가 없습니다.
+        </p>
+      )}
       <div className="categories-grid">
-        {categories.map((cat) => (
+        {visibleCategories.map((cat) => (
           <CardReveal key={cat.id}>
             <div id={cat.id} style={{ scrollMarginTop: '24px' }} />
             {/* Card header */}

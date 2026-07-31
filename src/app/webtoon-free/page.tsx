@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 /** 빌드 시점에 평가되므로 워커 재빌드마다 갱신된다 */
 const DATE_LABEL = getDateLabel();
@@ -44,11 +45,7 @@ const articleSchema = {
     url: SITE_URL,
     sameAs: [FACEBOOK_URL, GITHUB_URL],
   },
-  publisher: {
-    '@type': 'Organization',
-    name: '짭토끼',
-    url: SITE_URL,
-  },
+  publisher: ORG_PUBLISHER,
   datePublished: '2026-05-11',
   dateModified: TODAY_ISO,
   mainEntityOfPage: {

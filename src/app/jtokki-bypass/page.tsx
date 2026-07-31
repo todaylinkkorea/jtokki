@@ -5,23 +5,10 @@ import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiCTA } from '@/components/NewtokiCTA';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { getDateLabel, getTodayISO } from '@/lib/date';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 const PUBLISHED = '2026-07-28';
-
-/** 서버 렌더링 시점의 "YYYY년 M월" 문자열을 반환 */
-function getDateLabel(): string {
-  const now = new Date();
-  return `${now.getFullYear()}년 ${now.getMonth() + 1}월`;
-}
-
-/** 오늘 날짜를 "YYYY-MM-DD" 형식으로 반환 */
-function getTodayISO(): string {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-}
 
 export function generateMetadata(): Metadata {
   const dateLabel = getDateLabel();
@@ -88,12 +75,7 @@ export default function JtokkiBypassPage() {
       url: SITE_URL,
       sameAs: [FACEBOOK_URL, GITHUB_URL],
     },
-    publisher: {
-      '@type': 'Organization',
-      name: '짭토끼',
-      url: SITE_URL,
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-    },
+    publisher: ORG_PUBLISHER,
     datePublished: PUBLISHED,
     dateModified: todayISO,
     inLanguage: 'ko',
@@ -193,7 +175,7 @@ export default function JtokkiBypassPage() {
             맞는 해결 방법을 단계별로 안내합니다.
           </p>
 
-          <NewtokiCTA page="/jtokki-bypass" />
+          <NewtokiCTA />
 
           <h2 id="diagnose">1단계: 짭토끼 접속 오류 원인 진단</h2>
 

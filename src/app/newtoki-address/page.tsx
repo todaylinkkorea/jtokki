@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 /** 빌드 시점에 평가되므로 워커 재빌드마다 갱신된다 */
 const DATE_LABEL = getDateLabel();
@@ -35,7 +36,7 @@ const articleSchema = {
   description: '뉴토끼 최신 접속 주소를 짭토끼에서 실시간으로 검증하여 안내합니다.',
   image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼', url: SITE_URL, sameAs: [FACEBOOK_URL, GITHUB_URL] },
-  publisher: { '@type': 'Organization', name: '짭토끼', url: SITE_URL },
+  publisher: ORG_PUBLISHER,
   datePublished: '2026-05-13', dateModified: TODAY_ISO,
   mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/newtoki-address` },
 };
@@ -147,6 +148,11 @@ export default function NewtokiAddressPage() {
               </tbody>
             </table>
           </div>
+          <p className="table-note">
+            위 표는 2026-05-18까지 수동 정리된 변경 이력입니다. 이후의 변경 여부와
+            현재 접속 가능한 주소는 <Link href="/">짭토끼 홈의 실시간 상태</Link>에서
+            확인할 수 있습니다.
+          </p>
 
           <h2 id="faq">자주 묻는 질문</h2>
           <div className="faq-list">

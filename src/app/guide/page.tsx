@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: { absolute: '짭토끼 이용 가이드 — 사이트 상태 확인하는 법' },
@@ -28,7 +29,7 @@ const articleSchema = {
   description: '짭토끼의 실시간 모니터링 시스템과 검증 기준에 대해 알아보세요.',
   image: `${SITE_URL}/logo.png`,
   author: { '@type': 'Organization', name: '짭토끼' },
-  publisher: { '@type': 'Organization', name: '짭토끼' },
+  publisher: ORG_PUBLISHER,
   datePublished: '2026-04-28',
   dateModified: '2026-05-11',
 };

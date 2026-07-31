@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FAQItem } from '@/components/FAQItem';
 import { BunnyLogo } from '@/components/BunnyLogo';
 import { NewtokiInlineButton } from '@/components/NewtokiInlineButton';
+import { ORG_PUBLISHER } from '@/lib/schema';
 
 // 브랜드 키워드는 /jtokki, 주소 키워드는 /jtokki-address 가 담당한다.
 // /about 은 "누가 운영하며 어떻게 검증하는가"(E-E-A-T) 의도만 노린다.
@@ -46,11 +47,7 @@ const articleSchema = {
     url: SITE_URL,
     sameAs: [FACEBOOK_URL, GITHUB_URL],
   },
-  publisher: {
-    '@type': 'Organization',
-    name: '짭토끼',
-    url: SITE_URL,
-  },
+  publisher: ORG_PUBLISHER,
   datePublished: '2026-05-04',
   dateModified: '2026-05-11',
   mainEntityOfPage: {

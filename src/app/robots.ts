@@ -73,6 +73,7 @@ export default function robots(): MetadataRoute.Robots {
       // Note: FacebookBot is intentionally ALLOWED for OG card rendering
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    // Host 지시어는 스킴 없이 순수 호스트명만 유효 (Yandex 스펙)
+    host: SITE_URL.replace(/^https?:\/\//, ''),
   };
 }

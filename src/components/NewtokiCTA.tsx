@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { CATEGORIES, NEWTOKI_HISTORY } from '@/data/categories';
 import type { HistoryEntry } from '@/data/categories';
 
@@ -20,18 +19,8 @@ function getNewtokiUrl(): string {
   return newtoki?.url ?? 'https://ntk01.com';
 }
 
-interface NewtokiCTAProps {
-  /** Plausible Analytics 이벤트에 기록할 페이지 식별자. 기본값: '/newtoki' */
-  page?: string;
-}
-
-export function NewtokiCTA({ page = '/newtoki' }: NewtokiCTAProps) {
+export function NewtokiCTA() {
   const currentUrl = getNewtokiUrl();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <section className="ntk-cta" aria-label="뉴토끼 최신 주소 안내">
