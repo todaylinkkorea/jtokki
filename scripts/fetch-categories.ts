@@ -138,9 +138,7 @@ function generateCategoriesTs(apiData: CrawlerResponse): string {
     id: cat.category,
     icon: cat.icon,
     title: cat.categoryTitle,
-    sites: cat.sites
-      .filter((s) => s.name !== '오늘보지 (AI 영상)' && !s.currentUrl.includes('cu2day.com'))
-      .map((s) => ({
+    sites: cat.sites.map((s) => ({
         name: s.name,
         url: s.currentUrl,
         status: (s.status === 'unknown' ? 'live' : s.status) as 'live' | 'changed' | 'dead',

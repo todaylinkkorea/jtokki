@@ -32,6 +32,9 @@ export function generateMetadata(): Metadata {
       '짭토끼 최신주소',
       '짭토끼란',
       '뉴토끼 짭토끼',
+      '가짜 뉴토끼',
+      '뉴토끼 짭',
+      '짭토끼 구분',
       '웹툰 주소 검증',
       '웹툰 최신 주소',
       '뉴토끼 주소',
@@ -82,6 +85,69 @@ export default function JtokkiPage() {
     ],
   };
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '짭토끼가 뭔가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '짭토끼는 뉴토끼를 비롯한 주요 웹툰 사이트의 접속 주소를 5분 간격으로 자동 검증하는 실시간 모니터링 서비스입니다. 직접 웹툰을 제공하지 않으며, 오직 접속 가능한 최신 주소만 안내합니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '짭토끼에서 뉴토끼 주소를 어떻게 찾나요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '짭토끼 메인 페이지에서 웹툰 카테고리의 뉴토끼 항목을 찾아 🟢 LIVE 버튼을 클릭하면 현재 접속 가능한 최신 주소로 이동합니다. 도메인이 변경된 경우에도 자동으로 감지하여 새 주소로 안내합니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '짭토끼는 무료인가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '네, 짭토끼는 완전 무료 서비스입니다. 회원가입이나 개인정보 제공 없이 이용 가능합니다. 짭토끼는 어떠한 개인정보도 수집하지 않습니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '뉴토끼 주소가 자주 바뀌는 이유는?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '뉴토끼와 같은 웹툰 사이트는 저작권 관련 법적 조치(ISP 차단, 도메인 등록 취소 등)로 인해 도메인이 변경됩니다. 짭토끼는 이러한 변경을 5분 이내에 자동 감지하여 최신 주소로 업데이트합니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '짭토끼 말고 뉴토끼 주소를 찾는 다른 방법은?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '검색 엔진에서 직접 검색할 수 있지만, 오래된 주소나 피싱 사이트로 연결될 위험이 있습니다. 짭토끼의 실시간 검증 시스템을 통하면 현재 접속 가능한 안전한 주소를 바로 확인할 수 있습니다.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: "커뮤니티에서 말하는 '짭토끼'(가짜 뉴토끼)와 이 사이트는 같은 곳인가요?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "다릅니다. 커뮤니티에서 '짭토끼'는 뉴토끼를 복제한 가짜 웹툰 사이트를 가리키는 별칭으로도 쓰입니다. 이 사이트(짭토끼.com)는 웹툰을 제공하지 않으며, 원본 사이트의 진짜 최신 주소를 실시간 헬스체크로 검증해 안내하는 독립 서비스입니다. 가짜 사이트는 UI·워터마크·도메인 규칙으로 구분할 수 있습니다.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '짭토끼 주소는 어디인가요?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '짭토끼 공식 주소는 짭토끼.com (xn--h10bl69b7nf.com)입니다. 이 외의 주소는 사칭 사이트일 수 있으니 주의하세요.',
+        },
+      },
+    ],
+  };
+
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -105,6 +171,10 @@ export default function JtokkiPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/* Header */}
@@ -135,6 +205,9 @@ export default function JtokkiPage() {
             </li>
             <li>
               <a href="#newtoki">뉴토끼 최신 주소 확인</a>
+            </li>
+            <li>
+              <a href="#jjap-newtoki">가짜 뉴토끼(짭토끼) 구분법</a>
             </li>
             <li>
               <a href="#how-it-works">실시간 검증 방식</a>
@@ -223,6 +296,50 @@ export default function JtokkiPage() {
             </p>
             <NewtokiInlineButton />
           </div>
+
+          <h2 id="jjap-newtoki">
+            &lsquo;짭토끼&rsquo;라 불리는 가짜 뉴토끼, 어떻게 구분하나요?
+          </h2>
+
+          <p>
+            2026년 5월경 뉴토끼 접속이 불안정해진 시기에, 뉴토끼의 이름과
+            콘텐츠를 그대로 복제한 <strong>가짜 뉴토끼 사이트</strong>가
+            등장했고 커뮤니티에서는 이를 <strong>&lsquo;짭토끼&rsquo;</strong>
+            라고 부릅니다. 디시인사이드·에펨코리아 등에서 &ldquo;짭토끼
+            어떻게 들어가?&rdquo;, &ldquo;진짜 뉴토끼 근황&rdquo; 같은 글이
+            이어질 만큼 혼란이 컸습니다. 원본과 복제 사이트를 구분하는
+            방법은 다음과 같습니다:
+          </p>
+
+          <ul>
+            <li>
+              <strong>UI 확인</strong> — 복제 사이트는 원본 뉴토끼와 화면
+              구성·디자인이 다릅니다. 기존에 쓰던 화면과 낯설게 다르다면
+              의심하세요.
+            </li>
+            <li>
+              <strong>워터마크 확인</strong> — 복제 사이트는 원본보다
+              워터마크가 크고 개수가 많은 특징이 보고되었습니다.
+            </li>
+            <li>
+              <strong>주소(도메인) 확인</strong> — 원본 뉴토끼는 도메인 뒤
+              숫자만 바뀌는 규칙을 따릅니다. 규칙에서 벗어난 주소는 복제
+              또는 피싱일 가능성이 높습니다.
+            </li>
+            <li>
+              <strong>실시간 검증 활용</strong> — 짭토끼.com은 원본 사이트의
+              도메인 변경을 리다이렉트 추적으로 검증하므로,{' '}
+              <Link href="/">메인 페이지</Link>의 🟢 LIVE 주소를 이용하면
+              가짜 사이트를 거를 수 있습니다.
+            </li>
+          </ul>
+
+          <p>
+            참고로 이 사이트(짭토끼.com)는 웹툰을 제공하는 복제 사이트가
+            아니라, 이런 혼란 속에서 <strong>어떤 주소가 진짜이고 현재
+            접속 가능한지</strong>를 실시간으로 검증해 알려주는 독립
+            서비스입니다.
+          </p>
 
           <h2 id="how-it-works">짭토끼 실시간 검증 방식</h2>
 
@@ -357,6 +474,14 @@ export default function JtokkiPage() {
               검색 엔진에서 직접 검색할 수 있지만, 오래된 주소나 피싱 사이트로
               연결될 위험이 있습니다. 짭토끼의 실시간 검증 시스템을 통하면
               현재 접속 가능한 안전한 주소를 바로 확인할 수 있습니다.
+            </FAQItem>
+            <FAQItem question="커뮤니티에서 말하는 '짭토끼'(가짜 뉴토끼)와 이 사이트는 같은 곳인가요?">
+              다릅니다. 커뮤니티에서 &lsquo;짭토끼&rsquo;는 뉴토끼를 복제한
+              가짜 웹툰 사이트를 가리키는 별칭으로도 쓰입니다. 이 사이트
+              (짭토끼.com)는 웹툰을 제공하지 않으며, 원본 사이트의 진짜 최신
+              주소를 실시간 헬스체크로 검증해 안내하는 독립 서비스입니다.
+              가짜 사이트 구분법은 위의{' '}
+              <a href="#jjap-newtoki">가짜 뉴토끼 구분법</a> 섹션을 참고하세요.
             </FAQItem>
             <FAQItem question="짭토끼 주소는 어디인가요?">
               짭토끼 공식 주소는 짭토끼.com (xn--h10bl69b7nf.com)입니다.
